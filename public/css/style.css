@@ -1,0 +1,36 @@
+html  {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden; 
+}
+
+.navbar a {
+  font-weight: bold;
+}
+
+.bg {
+  height: 400px;
+  /* source: https://unsplash.com/photos/lbO1iCnbTW0 */
+  background-image: url(/images/background.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  color: #eaeaea;
+  text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.9);
+  overflow: hidden;
+}
+
+.link-footer {
+  color: #eaeaea;
+}
+
+button.navbar-button {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
