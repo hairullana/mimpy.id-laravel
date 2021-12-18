@@ -65,6 +65,9 @@
               {{-- button --}}
               <button type="submit" class="btn btn-primary btn-block">Login</button>
             </form>
+            <div class="d-block text-center mt-3">
+              <small>Not registered? <a href="/register">Register now!</a></small>
+            </div>
           </div>
         </div>
       </div>

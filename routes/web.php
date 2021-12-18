@@ -23,6 +23,8 @@ Route::get('/', function () {
     'jobs' => Job::all()
   ]);
 });
+// terms
+Route::get('/term', function(){ return view('term', ['title' => 'Term and Condition']); });
 
 // login
 Route::get('/login', [LoginController::class,'index'] );

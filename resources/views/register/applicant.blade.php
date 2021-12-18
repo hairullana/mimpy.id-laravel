@@ -93,6 +93,9 @@
                     <button type="submit" class="btn btn-primary">Register</button>
                   </div>
                 </form>
+                <div class="d-block text-center mt-3">
+                  <small>Already registered? <a href="/login">Login!</a></small>
+                </div>
               </table>
             </div>
 

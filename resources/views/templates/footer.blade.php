@@ -13,8 +13,8 @@
                     <h5 class="card-title">Mimpy.ID</h5>
                     <p class="card-text">
                         <!-- <a href="/mimpy.id" class="link-footer">Home</a><br> -->
-                        <a href="terms.php" class="link-footer">Term and Condition</a><br>
-                        <a href="terms.php#contact-us" class="link-footer">Contact Us</a><br>
+                        <a href="/term" class="link-footer">Term and Condition</a><br>
+                        <a href="/term#contact-us" class="link-footer">Contact Us</a><br>
                         <!-- <a href="#up" class="link-footer">Go To Navbar</a> -->
                     </p>
                 </div>

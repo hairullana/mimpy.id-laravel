@@ -98,7 +98,7 @@
                   </div>
                 </form>
                 <div class="d-block text-center mt-3">
-                  <small>Already registered? <a href="/register">Login!</a></small>
+                  <small>Already registered? <a href="/login">Login!</a></small>
                 </div>
               </table>
             </div>
