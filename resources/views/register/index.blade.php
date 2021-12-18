@@ -14,13 +14,13 @@
             <div class="container">
               <div class="row text-center">
                 <div class="col-md-12 my-2">
-                  <h5>Saya akan mendaftar sebagai ...</h5>
+                  <h5>I will register as...</h5>
                 </div>
                 <div class="col-12 my-2">
-                  <a href="registrasi-perusahaan.php"><button class="btn btn-primary btn-lg btn-block">Registrasi Sebagai Perusahaan</button></a>
+                  <a href="/register/company"><button class="btn btn-primary btn-lg btn-block">Company</button></a>
                 </div>
                 <div class="col-12 my-2">
-                  <a href="registrasi-pelamar.php"><button class="btn btn-primary btn-lg btn-block">Registrasi Sebagai Pelamar</button></a>
+                  <a href="/register/applicant"><button class="btn btn-primary btn-lg btn-block">Applicant</button></a>
                 </div>
               </div>
             </div>
