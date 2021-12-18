@@ -33,30 +33,61 @@
             <!-- form -->
             <div class="col-md-5">
               <table class="table">
-                <form action="/register/company" method="POST">
+                <form action="/register/applicant" method="POST">
+                  @csrf
                   <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Full Name" name="name">
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Full Name" name="name" required value="{{ old('name') }}">
+                    @error('name')
+                      <div class="small text-danger ml-2">
+                        {{ $message }}
+                      </div>
+                    @enderror
                   </div>
                   <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email" name="email">
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" required value="{{ old('email') }}">
+                    @error('email')
+                      <div class="small text-danger ml-2">
+                        {{ $message }}
+                      </div>
+                    @enderror
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Phone Number" name="number">
+                    <input type="text" class="form-control @error('number') is-invalid @enderror" placeholder="Phone Number" name="number" required value="{{ old('number') }}">
+                    @error('number')
+                      <div class="small text-danger ml-2">
+                        {{ $message }}
+                      </div>
+                    @enderror
                   </div>
                   <div class="form-group">
-                    <select name="gender" id="" class="form-control">
-                      <option value="pria">Male</option>
-                      <option value="wanita">Female</option>
+                    <select name="gender" class="form-control">
+                      @if (old('gender') == 0)
+                        <option value="0" selected>Female</option>
+                        <option value="1">Male</option>
+                      @else
+                        <option value="0">Female</option>
+                        <option value="1" selected>Male</option>
+                      @endif
                     </select>
                   </div>
                   <div class="form-group">
-                    <textarea type="text" class="form-control" placeholder="Address" name="address"></textarea>
+                    <textarea type="text" class="form-control @error('address') is-invalid @enderror" placeholder="Address" name="address" required>{{ old('address') }}</textarea>
+                    @error('address')
+                      <div class="small text-danger ml-2">
+                        {{ $message }}
+                      </div>
+                    @enderror
                   </div>
                   <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" name="password">
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" required>
+                    @error('password')
+                      <div class="small text-danger ml-2">
+                        {{ $message }}
+                      </div>
+                    @enderror
                   </div>
                   <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Retype Password" name="password2">
+                    <input type="password" class="form-control" placeholder="Retype Password" name="password_confirmation" required>
                   </div>
                   <div class="form-group text-center">
                     <button type="submit" class="btn btn-primary">Register</button>

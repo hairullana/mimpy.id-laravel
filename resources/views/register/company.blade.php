@@ -35,7 +35,7 @@
                 <form action="/register/company" method="POST">
                   @csrf
                   <div class="form-group">
-                    <input type="text" class="form-control  @error('name') is-invalid @enderror" placeholder="Company Name" name="name" value="{{ old('name') }}" required>
+                    <input type="text" class="form-control @error('name') is-invalid @enderror" placeholder="Company Name" name="name" value="{{ old('name') }}" required>
                     @error('name')
                       <div class="small text-danger ml-2">
                         {{ $message }}

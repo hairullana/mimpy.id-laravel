@@ -12,6 +12,7 @@ class Applicant extends Authenticable
     use HasFactory;
 
     protected $guard = 'applicant';
+    protected $guarded = ['id'];
 
     public function application(){
         return $this->hasMany(Application::class);
