@@ -32,4 +32,5 @@ Route::post('/logout', [LoginController::class,'logout'] );
 // register
 Route::get('/register', [RegisterController::class, 'index']);
 Route::get('/register/company', [RegisterController::class, 'company']);
+Route::post('/register/company', [RegisterController::class, 'companyRegister']);
 Route::get('/register/applicant', [RegisterController::class, 'applicant']);

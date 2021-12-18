@@ -12,4 +12,5 @@ class Company extends Authenticable
     use HasFactory;
 
     protected $guard = 'company';
+    protected $guarded = ['id'];
 }

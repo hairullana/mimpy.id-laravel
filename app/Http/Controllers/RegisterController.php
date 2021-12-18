@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use App\Models\Company;
 
 class RegisterController extends Controller
 {
@@ -22,5 +24,24 @@ class RegisterController extends Controller
         return view(('register.applicant'), [
             'title' => 'Applicant Register'
         ]);
+    }
+
+    public function companyRegister(Request $request){
+        $validData = $request->validate([
+            'name' => ['required', 'min:5'],
+            'email' => ['required', 'email:dns', 'unique:companies'],
+            'number' => ['required', 'unique:companies'],
+            'city' => ['required', 'min:4'],
+            'address' => ['required', 'min:5'],
+            'description' => ['required','min:10'],
+            'password' => ['required', 'confirmed', 'min:3']
+        ]);
+
+        $validData['password'] = Hash::make($validData['password']);
+        $validData['photo'] = 'default.jpg';
+
+        Company::create($validData);
+
+        return redirect('/login')->with('success', 'Registration successfull! Please login.');
     }
 }

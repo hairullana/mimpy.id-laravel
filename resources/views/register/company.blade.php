@@ -33,34 +33,73 @@
             <div class="col-md-5">
               <table class="table">
                 <form action="/register/company" method="POST">
+                  @csrf
                   <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Company Name" name="name">
+                    <input type="text" class="form-control  @error('name') is-invalid @enderror" placeholder="Company Name" name="name" value="{{ old('name') }}" required>
+                    @error('name')
+                      <div class="small text-danger ml-2">
+                        {{ $message }}
+                      </div>
+                    @enderror
                   </div>
                   <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Email" name="email">
+                    <input type="email" class="form-control @error('email') is-invalid @enderror" placeholder="Email" name="email" value="{{ old('email') }}" required>
+                    @error('email')
+                      <div class="small text-danger ml-2">
+                        {{ $message }}
+                      </div>
+                    @enderror
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Phone Number" name="number">
+                    <input type="text" class="form-control @error('number') is-invalid @enderror" placeholder="Phone Number" name="number" value="{{ old('number') }}" required>
+                    @error('number')
+                      <div class="small text-danger ml-2">
+                        {{ $message }}
+                      </div>
+                    @enderror
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control" placeholder="City" name="city">
+                    <input type="text" class="form-control @error('city') is-invalid @enderror" placeholder="City" name="city" value="{{ old('city') }}" required>
+                    @error('city')
+                      <div class="small text-danger ml-2">
+                        {{ $message }}
+                      </div>
+                    @enderror
                   </div>
                   <div class="form-group">
-                    <textarea type="text" class="form-control" placeholder="Address" name="address"></textarea>
+                    <textarea type="text" class="form-control @error('address') is-invalid @enderror" placeholder="Address" name="address" required>{{ old('address') }}</textarea>
+                    @error('address')
+                      <div class="small text-danger ml-2">
+                        {{ $message }}
+                      </div>
+                    @enderror
                   </div>
                   <div class="form-group">
-                    <textarea type="text" class="form-control" placeholder="About Company" name="description"></textarea>
+                    <textarea type="text" class="form-control @error('description') is-invalid @enderror" placeholder="About Company" name="description" required>{{ old('description') }}</textarea>
+                    @error('address')
+                      <div class="small text-danger ml-2">
+                        {{ $message }}
+                      </div>
+                    @enderror
                   </div>
                   <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Password" name="password">
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password" name="password" required>
+                    @error('password')
+                      <div class="small text-danger ml-2">
+                        {{ $message }}
+                      </div>
+                    @enderror
                   </div>
                   <div class="form-group">
-                    <input type="password" class="form-control" placeholder="Retype Password" name="password2">
+                    <input type="password" class="form-control @error('password') is-invalid @enderror" placeholder="Retype Password" name="password_confirmation" required>
                   </div>
                   <div class="form-group text-center">
                     <button type="submit" class="btn btn-primary">Register</button>
                   </div>
                 </form>
+                <div class="d-block text-center mt-3">
+                  <small>Already registered? <a href="/register">Login!</a></small>
+                </div>
               </table>
             </div>
           </div>
