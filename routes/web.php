@@ -3,6 +3,7 @@
 use App\Models\Job;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +16,7 @@ use App\Http\Controllers\LoginController;
 |
 */
 
+// index
 Route::get('/', function () {
   return view('index', [
     'title' => 'Minimize Unemployment',
@@ -22,6 +24,10 @@ Route::get('/', function () {
   ]);
 });
 
+// login
 Route::get('/login', [LoginController::class,'index'] );
 Route::post('/login', [LoginController::class,'login'] );
 Route::post('/logout', [LoginController::class,'logout'] );
+
+// register
+Route::get('/register', [RegisterController::class, 'index']);

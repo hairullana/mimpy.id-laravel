@@ -30,7 +30,7 @@
               <li class="nav-item"><button type="submit" class="navbar-button"><a class="nav-link active">Logout</a></button></li>
             </form>
           @else
-            <li class="nav-item"><a class="nav-link active" href="registrasi.php">Register</a></li>
+            <li class="nav-item"><a class="nav-link active" href="/register">Register</a></li>
             <li class="nav-item"><a class="nav-link active" href="/login">Login</a></li>
           @endif
         </ul>

@@ -8,7 +8,7 @@ Still in coding!
 
 ## INSTALLING
 
-#### 1. Clone this repo
+### 1. Clone this repo
 ```bash
 git clone https://github.com/hairullana/mimpy.id-laravel
 ```
