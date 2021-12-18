@@ -92,18 +92,21 @@
     <!-- end heading -->
 
     <!-- search -->
-    <form action="" method="post">
-      <div class="row mx-5 mb-5">
+    <form action="/">
+      <div class="row mx-5 mb-4">
         <div class="col">
-          <?php if (isset($_POST["keyword"])) : ?>
-            <input class="form-control" name="keyword" type="search" placeholder="Keyword" aria-label="Search"  value="<?= $_POST['keyword'] ?>">
-          <?php else : ?>
-            <input class="form-control" name="keyword" type="search" placeholder="Keyword" aria-label="Search">
-          <?php endif; ?>
+          <input class="form-control" name="search" type="search" placeholder="Keyword" aria-label="Search"  value="{{ request('search') }}">
         </div>
         <div>
-          <button class="btn btn-primary" name="cari" type="submit">Cari</button>
+          <button class="btn btn-primary" type="submit">Search</button>
         </div>
+        @if (request('search'))
+        <div class="col-12 text-center">
+          <div class="alert alert-light" role="alert">
+            Display job vacancies with keywords “<strong>{{ request('search') }}</strong>”
+          </div>
+        </div>
+        @endif
       </div>
     </form>
     <!-- end search -->
@@ -115,13 +118,13 @@
           <div class="col-md-6 mb-2">
             <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
               <div class="col-auto d-none d-lg-block">
-                <img src="/images/company/{{ $job->company->photo }}" width="200" height="205" alt="">
+                <img src="/images/company/@if(request('search')){{ $job->photo }}@else{{ $job->company->photo }}@endif" width="200" height="205" alt="">
               </div>
               <div class="col p-4 d-flex flex-column position-static">
-                <h3 class="mb-0">{{ $job->company->name }}</h3>
-                <div class="mb-1 text-muted">{{ $job->company->address }}</div>
+                <h3 class="mb-0">@if(request('search')) {{ $job->name }} @else {{ $job->company->name }} @endif</h3>
+                <div class="mb-1 text-muted">@if(request('search')) {{ $job->address }} @else {{ $job->company->address }} @endif</div>
                 <p class="card-text mb-auto">{{ $job->jobdesk }}</p>
-                <a href="detail-loker.php?id=<?= $job['idLoker'] ?>" class="stretched-link">read more</a>
+                <a href="detail-loker.php?id=" class="stretched-link">read more</a>
               </div>
             </div>
           </div>

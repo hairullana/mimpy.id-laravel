@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Job;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -18,9 +19,23 @@ use App\Http\Controllers\RegisterController;
 
 // index
 Route::get('/', function () {
+  $jobs = Job::latest();
+
+  if(request('search')){
+    $jobs = DB::table('jobs')
+            ->join('companies', function($join){
+              $join->on('jobs.company_id', '=', 'companies.id');
+            })
+            ->where('companies.name', 'like', '%' . request('search') . '%')
+            ->orWhere('companies.city', 'like', '%' . request('search') . '%')
+            ->orWhere('jobs.position', 'like', '%' . request('search') . '%');
+            // ->get();
+  }
+
+  // dd($jobs);
   return view('index', [
     'title' => 'Minimize Unemployment',
-    'jobs' => Job::latest()->paginate(6)
+    'jobs' => $jobs->paginate(6)
   ]);
 });
 // terms
