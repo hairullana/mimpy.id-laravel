@@ -20,7 +20,7 @@ use App\Http\Controllers\RegisterController;
 Route::get('/', function () {
   return view('index', [
     'title' => 'Minimize Unemployment',
-    'jobs' => Job::all()
+    'jobs' => Job::latest()->paginate(6)
   ]);
 });
 // terms

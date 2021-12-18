@@ -127,5 +127,9 @@
           </div>
         @endforeach
     </div>
+
+    <div class="d-flex justify-content-center">
+      {{ $jobs->links() }}
+    </div>
   </div>
 @endsection
