@@ -39,6 +39,11 @@ class LoginController extends Controller
             $request->session()->regenerate();
             return redirect()->intended('/');
           }
+        } else if ($request->role == 'admin') {
+          if(Auth::guard('admin')->attempt($credentials)){
+            $request->session()->regenerate();
+            return redirect()->intended('/');
+          }
         }
       }
 

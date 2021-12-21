@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Job;
+use App\Models\Admin;
 use App\Models\Company;
 use App\Models\Applicant;
 use App\Models\Application;
@@ -21,5 +22,6 @@ class DatabaseSeeder extends Seeder
         Job::factory(10)->create();
         Applicant::factory(5)->create();
         Application::factory(20)->create();
+        Admin::factory(1)->create();
     }
 }
