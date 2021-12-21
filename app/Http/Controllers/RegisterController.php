@@ -31,7 +31,7 @@ class RegisterController extends Controller
         $validData = $request->validate([
             'name' => ['required', 'min:5'],
             'email' => ['required', 'email:dns', 'unique:companies', 'unique:applicants'],
-            'number' => ['required', 'unique:companies', 'unique:applicants'],
+            'phone' => ['required', 'unique:companies', 'unique:applicants'],
             'city' => ['required', 'min:4'],
             'address' => ['required', 'min:5'],
             'description' => ['required','min:10'],
@@ -51,7 +51,7 @@ class RegisterController extends Controller
         $validData = $request->validate([
             'name' => ['required', 'min:3'],
             'email' => ['required', 'email:dns', 'unique:companies', 'unique:applicants'],
-            'number' => ['required', 'unique:companies', 'unique:applicants'],
+            'phone' => ['required', 'unique:companies', 'unique:applicants'],
             'gender' => ['required'],
             'address' => ['required', 'min:5'],
             'password' => ['required', 'confirmed', 'min:3']

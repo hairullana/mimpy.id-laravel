@@ -51,8 +51,8 @@
                     @enderror
                   </div>
                   <div class="form-group">
-                    <input type="text" class="form-control @error('number') is-invalid @enderror" placeholder="Phone Number" name="number" value="{{ old('number') }}" required>
-                    @error('number')
+                    <input type="text" class="form-control @error('phone') is-invalid @enderror" placeholder="Phone Number" name="phone" value="{{ old('phone') }}" required>
+                    @error('phone')
                       <div class="small text-danger ml-2">
                         {{ $message }}
                       </div>
@@ -76,7 +76,7 @@
                   </div>
                   <div class="form-group">
                     <textarea type="text" class="form-control @error('description') is-invalid @enderror" placeholder="About Company" name="description" required>{{ old('description') }}</textarea>
-                    @error('address')
+                    @error('description')
                       <div class="small text-danger ml-2">
                         {{ $message }}
                       </div>

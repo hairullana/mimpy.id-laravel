@@ -13,7 +13,7 @@
 
           @if (Auth::guard('admin')->check())
             <div class="col-md-3 offset-md-3">
-              <a href="profil.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Profil Admin</button></a>
+              <a href="/profile"><button type="button" class="btn btn-primary btn-block font-weight-bold">Profil Admin</button></a>
             </div>
             <div class="col-md-3">
               <a href="dashboard.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Dashboard Admin</button></a>
@@ -22,7 +22,7 @@
             <div class="col-12">
               <div class="row text-center mb-3">
                 <div class="col-md-3 offset-md-3">
-                  <a href="profil.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Profil Saya</button></a>
+                  <a href="/profile"><button type="button" class="btn btn-primary btn-block font-weight-bold">Profil Saya</button></a>
                 </div>
                 <div class="col-md-3">
                   <a href="buat-loker.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Buat Loker</button></a>
@@ -58,7 +58,7 @@
             </div>
           @elseif (Auth::guard('applicant')->check())
             <div class="col-md-3 offset-md-3">
-              <a href="profil.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Profil Saya</button></a>
+              <a href="/profile"><button type="button" class="btn btn-primary btn-block font-weight-bold">Profil Saya</button></a>
             </div>
             <div class="col-md-3">
               <a href="edit-cv.php">

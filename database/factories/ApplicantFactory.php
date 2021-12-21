@@ -16,7 +16,7 @@ class ApplicantFactory extends Factory
         return [
             'name' => $this->faker->name(),
             'email' => $this->faker->email(),
-            'number' => $this->faker->phoneNumber(),
+            'phone' => $this->faker->phoneNumber(),
             'gender' => mt_rand(0,1),
             'address' => $this->faker->address(),
             'photo' => 'default.jpg',

@@ -4,6 +4,7 @@ use App\Models\Job;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 
 /*
@@ -52,3 +53,6 @@ Route::get('/register/company', [RegisterController::class, 'company']);
 Route::post('/register/company', [RegisterController::class, 'companyRegister']);
 Route::get('/register/applicant', [RegisterController::class, 'applicant']);
 Route::post('/register/applicant', [RegisterController::class, 'applicantRegister']);
+
+// update profile
+Route::resource('/profile', ProfileController::class);
