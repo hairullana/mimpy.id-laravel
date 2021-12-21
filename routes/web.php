@@ -27,6 +27,7 @@ Route::get('/', function () {
             ->join('companies', function($join){
               $join->on('jobs.company_id', '=', 'companies.id');
             })
+            ->select('jobs.id as idJob', 'jobs.*', 'companies.*')
             ->where('companies.name', 'like', '%' . request('search') . '%')
             ->orWhere('companies.city', 'like', '%' . request('search') . '%')
             ->orWhere('jobs.position', 'like', '%' . request('search') . '%');

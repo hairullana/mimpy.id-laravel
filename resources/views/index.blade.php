@@ -111,10 +111,12 @@
     </form>
     <!-- end search -->
 
-
+    
+    
     <!-- list loker -->
     <div class="row mb-2">
-        @foreach ($jobs as $job)
+      @foreach ($jobs as $job)
+      {{-- {{ var_dump($job->idJob) }} --}}
           <div class="col-md-6 mb-2">
             <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
               <div class="col-auto d-none d-lg-block">
@@ -124,7 +126,7 @@
                 <h3 class="mb-0">@if(request('search')) {{ $job->name }} @else {{ $job->company->name }} @endif</h3>
                 <div class="mb-1 text-muted">@if(request('search')) {{ $job->address }} @else {{ $job->company->address }} @endif</div>
                 <p class="card-text mb-auto">{{ $job->jobdesk }}</p>
-                <a href="detail-loker.php?id=" class="stretched-link">read more</a>
+                <a href="/jobs/@if(request('search')){{ $job->idJob }}@else{{ $job->id }}@endif" class="stretched-link">read more</a>
               </div>
             </div>
           </div>
