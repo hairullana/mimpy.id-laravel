@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\JobsController;
 use App\Models\Job;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -40,6 +41,12 @@ Route::get('/', function () {
     'jobs' => $jobs->paginate(6)
   ]);
 });
+
+// show post
+Route::get('/job/{job:id}', [JobsController::class, 'show']);
+
+
+
 // terms
 Route::get('/term', function(){ return view('term', ['title' => 'Term and Condition']); });
 
