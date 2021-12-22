@@ -51,16 +51,17 @@ Route::get('/job/{job:id}', [JobsController::class, 'show']);
 Route::get('/term', function(){ return view('term', ['title' => 'Term and Condition']); });
 
 // login
-Route::get('/login', [LoginController::class,'index'] );
-Route::post('/login', [LoginController::class,'login'] );
+Route::get('/login', [LoginController::class,'index'] )->name('login')->middleware('guest:admin,company,applicant');
+Route::post('/login', [LoginController::class,'login'] )->middleware('guest:admin,company,applicant');
+// logout
 Route::post('/logout', [LoginController::class,'logout'] );
 
 // register
-Route::get('/register', [RegisterController::class, 'index']);
-Route::get('/register/company', [RegisterController::class, 'company']);
-Route::post('/register/company', [RegisterController::class, 'companyRegister']);
-Route::get('/register/applicant', [RegisterController::class, 'applicant']);
-Route::post('/register/applicant', [RegisterController::class, 'applicantRegister']);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest:admin,company,applicant');
+Route::get('/register/company', [RegisterController::class, 'company'])->middleware('guest:admin,company,applicant');
+Route::post('/register/company', [RegisterController::class, 'companyRegister'])->middleware('guest:admin,company,applicant');
+Route::get('/register/applicant', [RegisterController::class, 'applicant'])->middleware('guest:admin,company,applicant');
+Route::post('/register/applicant', [RegisterController::class, 'applicantRegister'])->middleware('guest:admin,company,applicant');
 
 // update profile
-Route::resource('/profile', ProfileController::class);
+Route::resource('/profile', ProfileController::class)->middleware('auth:admin,company,applicant');
