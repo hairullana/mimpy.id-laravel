@@ -37,15 +37,15 @@
 
               {{-- choose role --}}
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="role" id="admin" value="admin">
+                <input class="form-check-input" type="radio" name="role" id="admin" value="admin" @if(old('role') == 'admin') checked @endif>
                   <label class="form-check-label" for="admin">Admin</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="role" id="company" value="company">
+                  <input class="form-check-input" type="radio" name="role" id="company" value="company" @if(old('role') == 'company') checked @endif>
                   <label class="form-check-label" for="company">Company</label>
                 </div>
                 <div class="form-check form-check-inline">
-                  <input class="form-check-input" type="radio" name="role" id="applicant" value="applicant">
+                  <input class="form-check-input" type="radio" name="role" id="applicant" value="applicant" @if(old('role') == 'applicant') checked @endif>
                   <label class="form-check-label" for="applicant">Applicant</label>
                 </div>
               </div>
@@ -53,7 +53,7 @@
               {{-- email --}}
               <div class="form-group">
                 <label for="email">Email Address</label>
-                <input type="email" class="form-control" id="email" placeholder="Email" name="email" id="email" required autofocus>
+                <input type="email" class="form-control" placeholder="Email" name="email" id="email" value="{{ old('email') }}" required autofocus>
               </div>
 
               {{-- password --}}
