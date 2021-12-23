@@ -12,19 +12,19 @@
         <ul class="navbar-nav mr-auto"></ul>
         <ul class="navbar-nav">
           @if(Auth::guard('admin')->check())
-            <li class="nav-item"><a class="nav-link active" href="profil.php">Admin</a></li>
+            <li class="nav-item"><a class="nav-link active" href="/profile">Admin</a></li>
             <form action="/logout" method="post">
               @csrf
               <li class="nav-item"><button type="submit" class="navbar-button"><a class="nav-link active">Logout</a></button></li>
             </form>
           @elseif(Auth::guard('company')->check())
-            <li class="nav-item"><a class="nav-link active" href="profil.php">{{ Auth::guard('company')->user()->name }}</a></li>
+            <li class="nav-item"><a class="nav-link active" href="/profile">{{ Auth::guard('company')->user()->name }}</a></li>
             <form action="/logout" method="post">
               @csrf
               <li class="nav-item"><button type="submit" class="navbar-button"><a class="nav-link active">Logout</a></button></li>
             </form>
           @elseif(Auth::guard('applicant')->check())
-            <li class="nav-item"><a class="nav-link active" href="profil.php">{{ Auth::guard('applicant')->user()->name }}</a></li>
+            <li class="nav-item"><a class="nav-link active" href="/profile">{{ Auth::guard('applicant')->user()->name }}</a></li>
             <form action="/logout" method="post">
               @csrf
               <li class="nav-item"><button type="submit" class="navbar-button"><a class="nav-link active">Logout</a></button></li>
