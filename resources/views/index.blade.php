@@ -46,7 +46,7 @@
           <div class="col-md-6 mb-2">
             <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
               <div class="col-auto d-none d-lg-block">
-                <img src="/images/company/@if(request('search')){{ $job->photo }}@else{{ $job->company->photo }}@endif" width="200" height="205" alt="">
+                <img src="/storage/@if(request('search')){{ $job->photo }}@else{{ $job->company->photo }}@endif" width="200" height="205" alt="">
               </div>
               <div class="col p-4 d-flex flex-column position-static">
                 <h3 class="mb-0">@if(!request('search')) {{ $job->position . ' | ' . $job->company->name }} @else {{ $job->job->position . ' | ' . $job->company->name }} @endif</h3>

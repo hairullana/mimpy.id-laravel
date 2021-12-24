@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -46,24 +47,40 @@ class ProfileController extends Controller
         
             Admin::where('id', $id)->update($validData);
         } else if (Auth::guard('company')->check()){
-            $validData = $request->validate([
-                'name' => ['required', 'min:5'],
-                'email' => ['required', 'email', 'unique:companies,email,'.$id, 'unique:applicants'],
-                'phone' => ['required', 'unique:companies,phone,'.$id, 'unique:applicants'],
-                'city' => ['required', 'min:4'],
-                'address' => ['required', 'min:5'],
-                'description' => ['required','min:10']
-            ]);
+          $validData = $request->validate([
+            'photo' => ['image', 'file', 'max:1024'],
+            'name' => ['required', 'min:5'],
+            'email' => ['required', 'email', 'unique:companies,email,'.$id, 'unique:applicants'],
+            'phone' => ['required', 'unique:companies,phone,'.$id, 'unique:applicants'],
+            'city' => ['required', 'min:4'],
+            'address' => ['required', 'min:5'],
+            'description' => ['required','min:10']
+          ]);
 
-            Company::where('id', $id)->update($validData);
+          if($request->file('photo')) {
+            if($request->oldPhoto != 'images/company/default.jpg'){
+              Storage::disk('public')->delete($request->oldPhoto);
+            }
+            $validData['photo'] = $request->file('photo')->store('images/company', 'public');
+          }
+
+          Company::where('id', $id)->update($validData);
         } else if (Auth::guard('applicant')->check()){
             $validData = $request->validate([
+                'photo' => ['image', 'file', 'max:1024'],
                 'name' => ['required', 'min:3'],
                 'email' => ['required', 'email', 'unique:companies', 'unique:applicants,email,'.$id],
                 'phone' => ['required', 'unique:companies', 'unique:applicants,phone,'.$id],
                 'gender' => ['required'],
                 'address' => ['required', 'min:5']
             ]);
+
+            if($request->file('photo')) {
+              if($request->oldPhoto != 'images/company/default.jpg'){
+                Storage::disk('public')->delete($request->oldPhoto);
+              }
+              $validData['photo'] = $request->file('photo')->store('images/applicant', 'public');
+            }
 
             Applicant::where('id', $id)->update($validData);
         }

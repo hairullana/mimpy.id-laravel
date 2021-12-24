@@ -46,7 +46,7 @@
         @elseif(Auth::guard('company')->check())
           <div class="row my-3">
             <div class="col text-center">
-              <img src="images/company/{{ Auth::guard('company')->user()->photo }}" class="rounded img-fluid" width=35% style="max-width:200px">
+              <img src="/storage/{{ Auth::guard('company')->user()->photo }}" class="rounded img-fluid" width=35% style="max-width:200px">
             </div>
           </div>
 
@@ -54,6 +54,7 @@
             <div class="col-md-6 offset-md-3 active mt-3">
               <div class="input-group mb-3">
                 <div class="custom-file">
+                  <input type="hidden" name="oldPhoto" value="{{ Auth::guard('company')->user()->photo }}">
                   <input type="file" name="photo" class="custom-file-input @error('photo') is-invalid @enderror" id="photo">
                   <label class="custom-file-label" for="photo">Profile Photo</label>
                   @error('photo')
@@ -118,7 +119,7 @@
         @elseif(Auth::guard('applicant')->check())
           <div class="row my-3">
             <div class="col text-center">
-              <img src="/images/applicant/{{ Auth::guard('applicant')->user()->photo }}" alt="" class="rounded img-fluid" width=35% style="max-width:200px">
+              <img src="/storage/{{ Auth::guard('applicant')->user()->photo }}" alt="" class="rounded img-fluid" width=35% style="max-width:200px">
             </div>
           </div>
               
@@ -126,6 +127,7 @@
             <div class="col-md-6 offset-md-3 active mt-3">
               <div class="input-group mb-3">
                 <div class="custom-file">
+                  <input type="hidden" name="oldPhoto" value="{{ Auth::guard('applicant')->user()->photo }}">
                   <input type="file" name="photo" class="custom-file-input @error('photo') is-invalid @enderror" id="photo">
                   <label class="custom-file-label" for="photo">Profile Photo</label>
                   @error('photo')

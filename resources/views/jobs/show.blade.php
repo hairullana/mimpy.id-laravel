@@ -15,7 +15,7 @@
                       <div class="container">
                           <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                               <div class="col-auto d-none d-lg-block">
-                                  <img src="/images/company/{{ $job->company->photo }}" width="200" height="205">
+                                  <img src="/storage/{{ $job->company->photo }}" width="200" height="205">
                               </div>
                               <div class="col p-4 d-flex flex-column position-static">
                                   <h3 class="mb-0">{{ $job->company->name }}</h3>
