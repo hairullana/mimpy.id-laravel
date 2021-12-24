@@ -8,6 +8,7 @@ use App\Models\Applicant;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -73,5 +74,38 @@ class ProfileController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function changePassword() {
+        return view('profile.password', [
+            'title' => 'Change Password'
+        ]);
+    }
+
+    public function updatePassword(Request $request) {
+        $request->validate([
+            'current_password'  => ['required'],
+            'password' => ['required', 'min:3', 'confirmed'],
+            'password_confirmation' => ['required']
+        ]);
+
+        if (Auth::guard('admin')->check()){
+          $user = Admin::find(Auth::guard('admin')->user()->id);
+        } else if(Auth::guard('company')->check()) {
+          $user = Company::find(Auth::guard('company')->user()->id);
+        } else if(Auth::guard('applicant')->check()) {
+          $user = Applicant::find(Auth::guard('applicant')->user()->id);
+        }
+
+        // dd($user->password);
+
+        if (!Hash::check($request->current_password, $user->password)) {
+          return back()->with('error', 'Current password does not match!');
+        }
+
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        return back()->with('success', 'Password successfully changed!');
     }
 }

@@ -65,3 +65,6 @@ Route::post('/register/applicant', [RegisterController::class, 'applicantRegiste
 
 // update profile
 Route::resource('/profile', ProfileController::class)->middleware('auth:admin,company,applicant');
+// update password
+Route::get('/change-password', [ProfileController::class, 'changePassword'])->middleware('auth:admin,company,applicant');
+Route::post('/change-password', [ProfileController::class, 'updatePassword'])->middleware('auth:admin,company,applicant');
