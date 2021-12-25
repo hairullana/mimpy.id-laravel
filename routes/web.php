@@ -1,12 +1,14 @@
 <?php
 
-use App\Http\Controllers\JobsController;
 use App\Models\Job;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JobsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,3 +70,6 @@ Route::resource('/profile', ProfileController::class)->middleware('auth:admin,co
 // update password
 Route::get('/change-password', [ProfileController::class, 'changePassword'])->middleware('auth:admin,company,applicant');
 Route::post('/change-password', [ProfileController::class, 'updatePassword'])->middleware('auth:admin,company,applicant');
+
+// dashboard
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth:admin');

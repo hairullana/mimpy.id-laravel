@@ -10,7 +10,7 @@
           <a href="/profile"><button type="button" class="btn btn-primary btn-block font-weight-bold">Profil Admin</button></a>
         </div>
         <div class="col-md-3">
-          <a href="dashboard.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Dashboard Admin</button></a>
+          <a href="/dashboard"><button type="button" class="btn btn-primary btn-block font-weight-bold">Dashboard Admin</button></a>
         </div>
       @elseif (Auth::guard('company')->check())
         <div class="col-12">
