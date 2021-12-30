@@ -12,14 +12,21 @@
     <div class="card-body">
 
       {{-- search --}}
-      <form action="" method="post">
+      <form action="/dashboard/companies">
         <div class="row mx-5 mb-4">
           <div class="col">
-            <input class="form-control" name="keyword" type="search" placeholder="Keyword" aria-label="Search" value="">
+            <input class="form-control" name="search" type="search" placeholder="Keyword" value="{{ request('search') }}">
           </div>
           <div>
-            <button name="cari" class="btn btn-primary" type="submit">Search</button>
+            <button class="btn btn-primary" type="submit">Search</button>
           </div>
+          @if (request('search'))
+          <div class="col-12 text-center">
+            <div class="alert alert-light" role="alert">
+              Display companies with keywords “<strong>{{ request('search') }}</strong>”
+            </div>
+          </div>
+          @endif
         </div>
       </form>
 
@@ -40,10 +47,10 @@
             @foreach ($companies as $company)
               <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $company['name'] }}</td>
-                <td>{{ $company['email'] }}</td>
-                <td>{{ $company['phone'] }}</td>
-                <td>{{ $company['city'] }}</td>
+                <td>{{ $company->name }}</td>
+                <td>{{ $company->email }}</td>
+                <td>{{ $company->phone }}</td>
+                <td>{{ $company->city }}</td>
                 <td>
                   <a href="perusahaan.php?id=" class="btn btn-outline-primary btn-block">Detail</a>
                   <a href="hapus-perusahaan.php?id=" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Perusahaan ?')" class="btn btn-outline-danger btn-block">Delete</a>
@@ -53,6 +60,11 @@
           </tbody>
         </table>
       </div>
+
+      <div class="d-flex justify-content-center">
+        {{ $companies->links() }}
+      </div>
+
     </div>
   </div>
 @endsection

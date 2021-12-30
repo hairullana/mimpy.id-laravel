@@ -4,15 +4,26 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class CompanyDashboardController extends Controller
 {
     public function index()
     {
+        $companies = Company::latest();
+
+        if(request('search')){
+            $companies = DB::table('companies')
+                    ->where('name', 'like', '%' . request('search') . '%')
+                    ->orWhere('city', 'like', '%' . request('search') . '%')
+                    ->orWhere('address', 'like', '%' . request('search') . '%')
+                    ->orWhere('phone', 'like', '%' . request('search') . '%')
+                    ->orWhere('description', 'like', '%' . request('search') . '%');
+        }
         return view('dashboard.companies', [
             'title' => 'Companies Data',
-            'companies' => Company::get()
+            'companies' => $companies->paginate(3)
         ]);
     }
 
