@@ -52,7 +52,7 @@
                 <td>{{ $company->phone }}</td>
                 <td>{{ $company->city }}</td>
                 <td>
-                  <a href="perusahaan.php?id=" class="btn btn-outline-primary btn-block">Detail</a>
+                  <a href="/dashboard/companies/{{ $company->id }}" class="btn btn-outline-primary btn-block">Detail</a>
                   <a href="hapus-perusahaan.php?id=" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Perusahaan ?')" class="btn btn-outline-danger btn-block">Delete</a>
                 </td>
               </tr>

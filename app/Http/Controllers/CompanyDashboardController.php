@@ -48,15 +48,12 @@ class CompanyDashboardController extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        return view('dashboard.showCompany', [
+            'title' => Company::find($id)->name . ' Company',
+            'company' => Company::find($id)
+        ]);
     }
 
     /**
