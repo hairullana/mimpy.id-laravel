@@ -1,7 +1,7 @@
 @include('dashboard.templates.header')
 @include('templates.navbar')
 
-<div class="row no-gutters mt-5">
+<div class="row no-gutters">
   
   @include('dashboard.templates.sidebar')
 
