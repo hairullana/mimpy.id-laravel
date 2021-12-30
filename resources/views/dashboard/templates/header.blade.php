@@ -19,6 +19,6 @@
       <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
 
       <!-- title -->
-      <title>{{ $title }}</title>
+      <title>{{ $title }} | Mimpy.ID</title>
   </head>
   <body>

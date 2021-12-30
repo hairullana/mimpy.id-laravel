@@ -5,11 +5,23 @@
 
     {{-- title --}}
     <div class="card-header text-center">
-      <h3 class="">Data Perusahaan</h3>
+      <h3 class="">Companies Data</h3>
     </div>
 
     {{-- body --}}
     <div class="card-body">
+
+      {{-- alert --}}
+      @if (session()->has('success'))
+        <div class="text-center">
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+      @endif
 
       {{-- search --}}
       <form action="/dashboard/companies">
@@ -35,12 +47,12 @@
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
           <thead>
             <tr>
-              <th>ID</th>
-              <th>Nama Perusahaan</th>
+              <th>No</th>
+              <th>Name</th>
               <th>E-mail</th>
-              <th>No Telp</th>
-              <th>Kota</th>
-              <th>Aksi</th>
+              <th>Phone Number</th>
+              <th>City</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -53,7 +65,11 @@
                 <td>{{ $company->city }}</td>
                 <td>
                   <a href="/dashboard/companies/{{ $company->id }}" class="btn btn-outline-primary btn-block">Detail</a>
-                  <a href="hapus-perusahaan.php?id=" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Perusahaan ?')" class="btn btn-outline-danger btn-block">Delete</a>
+                  <form action="/dashboard/companies/{{ $company->id }}" method="post">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Perusahaan ?')" class="btn btn-outline-danger btn-block mt-1">Delete</button>
+                  </form>
                 </td>
               </tr>
             @endforeach
