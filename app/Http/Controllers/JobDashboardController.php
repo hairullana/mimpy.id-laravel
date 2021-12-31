@@ -5,12 +5,24 @@ namespace App\Http\Controllers;
 use App\Models\Job;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Support\Facades\DB;
 
 class JobDashboardController extends Controller
 {
     public function index()
     {
         $jobs = Job::latest();
+
+        if(request('search')){
+            $jobs = DB::table('jobs')
+                    ->join('companies', function($join){
+                      $join->on('jobs.company_id', '=', 'companies.id');
+                    })
+                    // ->select('jobs.*', 'companies.*')
+                    ->where('companies.name', 'like', '%' . request('search') . '%')
+                    ->orWhere('companies.city', 'like', '%' . request('search') . '%')
+                    ->orWhere('jobs.position', 'like', '%' . request('search') . '%');
+        }
 
         return view('dashboard.jobs', [
             'title' => 'Jobs Data',

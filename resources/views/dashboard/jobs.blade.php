@@ -8,7 +8,7 @@
   <div class="card-body">
 
     <!-- search -->
-    <form action="" method="post">
+    <form action="/dashboard/jobs">
       <div class="row mx-5">
         <div class="col">
           <div class="form-group">
@@ -38,10 +38,10 @@
           @foreach ($jobs as $job)
             <tr>
               <td>{{ $loop->iteration }}</td>
-              <td>{{ $job->company->name }}</td>
+              <td>@if(request('search')){{ $job->name }}@else{{ $job->company->name }}@endif</td>
               <td>{{ $job->position }}</td>
               <td>{{ $job->education_id }}</td>
-              <td>{{ $job->status }}</td>
+              <td>@if($job->status) Active @else Not Active @endif</td>
               <td>
                 <a href="detail-loker.php?id=" class="btn btn-outline-primary">Detail</a>
                 <a href="hapus-loker.php?id=" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Lowongan Kerja ?')" class="btn btn-outline-danger">Delete</a>
