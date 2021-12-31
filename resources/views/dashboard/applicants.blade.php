@@ -10,6 +10,18 @@
     {{-- body --}}
     <div class="card-body">
 
+      {{-- alert --}}
+      @if (session()->has('success'))
+        <div class="text-center">
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+      @endif
+
       <!-- search -->
       <form action="/dashboard/applicants">
         <div class="row mx-5 mb-4">
@@ -56,7 +68,11 @@
                 <td><a href="/assets/cv/">CV</a></td>
                 <td>
                   <a href="/dashboard/applicants/{{ $applicant->id }}" class="btn btn-outline-primary btn-block">Detail</a>
-                  <a href="hapus-pelamar.php?id=" onclick="return confirm('Are you sure?')" class="btn btn-outline-danger btn-block">Delete</a>
+                  <form action="/dashboard/applicants/{{ $applicant->id }}" method="post">
+                    @csrf
+                    @method('delete')
+                    <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-outline-danger btn-block mt-1">Delete</button>
+                  </form>
                 </td>
               </tr>
             @endforeach

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Applicant;
+use App\Models\Application;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class ApplicantDashboardController extends Controller
 {
@@ -90,6 +92,9 @@ class ApplicantDashboardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Applicant::destroy($id);
+        Application::where('applicant_id', $id)->delete();
+
+        return redirect('/dashboard/applicants')->with('success', 'Applicant has been deleted.');
     }
 }
