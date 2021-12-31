@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ApplicantDashboardController;
 use App\Http\Controllers\CompanyDashboardController;
 use App\Models\Job;
 use Illuminate\Support\Facades\DB;
@@ -77,3 +78,4 @@ Route::post('/change-password', [ProfileController::class, 'updatePassword'])->m
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth:admin');
 Route::resource('/dashboard/companies', CompanyDashboardController::class)->middleware('auth:admin');
 Route::resource('/dashboard/jobs', JobDashboardController::class)->middleware('auth:admin');
+Route::resource('/dashboard/applicants', ApplicantDashboardController::class)->middleware('auth:admin');
