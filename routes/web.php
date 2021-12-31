@@ -9,6 +9,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\JobDashboardController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -75,3 +76,4 @@ Route::post('/change-password', [ProfileController::class, 'updatePassword'])->m
 // dashboard
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth:admin');
 Route::resource('/dashboard/companies', CompanyDashboardController::class)->middleware('auth:admin');
+Route::resource('/dashboard/jobs', JobDashboardController::class)->middleware('auth:admin');
