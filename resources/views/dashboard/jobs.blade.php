@@ -7,6 +7,18 @@
     </div>
   <div class="card-body">
 
+    {{-- alert --}}
+    @if (session()->has('success'))
+      <div class="text-center">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{ session('success') }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    @endif
+
     <!-- search -->
     <form action="/dashboard/jobs">
       <div class="row mx-5">
@@ -44,7 +56,11 @@
               <td>@if($job->status) Active @else Not Active @endif</td>
               <td>
                 <a href="/dashboard/jobs/@if(request('search')){{ $job->idJob }}@else{{ $job->id }}@endif" class="btn btn-outline-primary">Detail</a>
-                <a href="hapus-loker.php?id=" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Lowongan Kerja ?')" class="btn btn-outline-danger">Delete</a>
+                <form action="/dashboard/jobs/@if(request('search')){{ $job->idJob }}@else{{ $job->id }}@endif" method="post">
+                  @csrf
+                  @method('delete')
+                  <button onclick="return confirm('Are you sure?')" class="btn btn-outline-danger mt-1" type="submit">Delete</button>
+                </form>
               </td>
             </tr>
           @endforeach

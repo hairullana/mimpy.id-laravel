@@ -68,7 +68,7 @@
                   <form action="/dashboard/companies/{{ $company->id }}" method="post">
                     @csrf
                     @method('delete')
-                    <button type="submit" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Data Perusahaan ?')" class="btn btn-outline-danger btn-block mt-1">Delete</button>
+                    <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-outline-danger btn-block mt-1">Delete</button>
                   </form>
                 </td>
               </tr>
