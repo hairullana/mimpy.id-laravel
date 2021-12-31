@@ -53,7 +53,10 @@ class ApplicantDashboardController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('dashboard.applicant', [
+            'title' => 'Applicant Detail',
+            'applicant' => Applicant::find($id)
+        ]);
     }
 
     /**

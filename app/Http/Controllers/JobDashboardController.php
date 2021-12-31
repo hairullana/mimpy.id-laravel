@@ -60,7 +60,7 @@ class JobDashboardController extends Controller
      */
     public function show($id)
     {
-        return view('dashboard.showJob', [
+        return view('dashboard.job', [
             'title' => 'Job Detail',
             'job' => Job::find($id)
         ]);

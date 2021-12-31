@@ -53,7 +53,7 @@ class CompanyDashboardController extends Controller
 
     public function show($id)
     {
-        return view('dashboard.showCompany', [
+        return view('dashboard.company', [
             'title' => Company::find($id)->name . ' Company',
             'company' => Company::find($id)
         ]);

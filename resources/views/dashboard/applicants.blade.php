@@ -55,7 +55,7 @@
                 <td>{{ $applicant->address }}</td>
                 <td><a href="/assets/cv/">CV</a></td>
                 <td>
-                  <a href="pelamar.php?id=" class="btn btn-outline-primary btn-block">Detail</a>
+                  <a href="/dashboard/applicants/{{ $applicant->id }}" class="btn btn-outline-primary btn-block">Detail</a>
                   <a href="hapus-pelamar.php?id=" onclick="return confirm('Are you sure?')" class="btn btn-outline-danger btn-block">Delete</a>
                 </td>
               </tr>
