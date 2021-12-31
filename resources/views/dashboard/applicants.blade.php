@@ -11,7 +11,7 @@
     <div class="card-body">
 
       <!-- search -->
-      <form action="" method="post">
+      <form action="/dashboard/applicants">
         <div class="row mx-5 mb-4">
           <div class="col">
             <input class="form-control" name="search" type="search" placeholder="Keyword" value="{{ request('search') }}">
@@ -19,6 +19,8 @@
           <div>
             <button class="btn btn-primary" type="submit">Search</button>
           </div>
+
+          {{-- alert --}}
           @if (request('search'))
           <div class="col-12 text-center">
             <div class="alert alert-light" role="alert">

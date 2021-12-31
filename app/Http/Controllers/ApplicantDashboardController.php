@@ -10,6 +10,14 @@ class ApplicantDashboardController extends Controller
     public function index()
     {
         $applicants = Applicant::latest();
+
+        if(request('search')){
+            $applicants = Applicant::where('name', 'like', '%' . request('search') . '%')
+                            ->orWhere('email', 'like', '%' . request('search') . '%')
+                            ->orWhere('address', 'like', '%' . request('search') . '%')
+                            ->orWhere('phone', 'like', '%' . request('search') . '%');
+        }
+
         return view('dashboard.applicants', [
             'title' => 'Applicants Data',
             'applicants' => $applicants->paginate(3)
