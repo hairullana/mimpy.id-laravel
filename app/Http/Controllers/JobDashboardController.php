@@ -18,7 +18,7 @@ class JobDashboardController extends Controller
                     ->join('companies', function($join){
                       $join->on('jobs.company_id', '=', 'companies.id');
                     })
-                    // ->select('jobs.*', 'companies.*')
+                    ->select('jobs.id as idJob', 'jobs.*', 'companies.*')
                     ->where('companies.name', 'like', '%' . request('search') . '%')
                     ->orWhere('companies.city', 'like', '%' . request('search') . '%')
                     ->orWhere('jobs.position', 'like', '%' . request('search') . '%');
@@ -59,7 +59,10 @@ class JobDashboardController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('dashboard.showJob', [
+            'title' => 'Job Detail',
+            'job' => Job::find($id)
+        ]);
     }
 
     /**

@@ -30,11 +30,11 @@
                       <div class="col-md-10 offset-md-1">
                           <table class="table">
                               <tr>
-                                  <th>Posisi</th>
+                                  <th>Position</th>
                                   <td>{{ $job->position }}</td>
                               </tr>
                               <tr>
-                                  <th>Minimal Lulusan</th>
+                                  <th>Education</th>
                                   <td>{{ $job->education_id }}</td>
                               </tr>
                               <tr>
@@ -42,7 +42,7 @@
                                   <td>{{ $job->jobdesk }}</td>
                               </tr>
                               <tr>
-                                  <th>Keterangan</th>
+                                  <th>Description</th>
                                   <td>{{ $job->description }}</td>
                               </tr>
                           </table>
