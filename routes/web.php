@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\ApplicantDashboardController;
-use App\Http\Controllers\CompanyDashboardController;
 use App\Models\Job;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -11,6 +9,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JobDashboardController;
+use App\Http\Controllers\CompanyDashboardController;
+use App\Http\Controllers\ApplicantDashboardController;
+use App\Http\Controllers\ApplicationDashboardController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -79,3 +80,4 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('aut
 Route::resource('/dashboard/companies', CompanyDashboardController::class)->middleware('auth:admin');
 Route::resource('/dashboard/jobs', JobDashboardController::class)->middleware('auth:admin');
 Route::resource('/dashboard/applicants', ApplicantDashboardController::class)->middleware('auth:admin');
+Route::resource('/dashboard/applications', ApplicationDashboardController::class)->middleware('auth:admin');
