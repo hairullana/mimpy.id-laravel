@@ -42,9 +42,9 @@
             @foreach ($applications as $application)
               <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $application->applicant->name }}</td>
-                <td>{{ $application->job->company->name }}</td>
-                <td>{{ $application->job->position }}</td>
+                <td>@if(request('search')){{ $application->applicant }}@else{{ $application->applicant->name }}@endif</td>
+                <td>@if(request('search')){{ $application->company }}@else{{ $application->job->company->name }}@endif</td>
+                <td>@if(request('search')){{ $application->position }}@else{{ $application->job->position }}@endif</td>
                 <td>
                   @if ($application->status == -1)
                     Waiting
