@@ -82,14 +82,10 @@ class ApplicationDashboardController extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        Application::destroy($id);
+
+        return redirect('/dashboard/applications')->with('success', 'Application has been deleted.');
     }
 }

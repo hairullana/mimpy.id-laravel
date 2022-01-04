@@ -11,6 +11,18 @@
     {{-- body --}}
     <div class="card-body">
 
+      {{-- alert --}}
+      @if (session()->has('success'))
+        <div class="text-center">
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </div>
+      @endif
+
       {{-- search --}}
       <form action="/dashboard/applications">
         <div class="row mx-5">
