@@ -11,9 +11,19 @@ class JobController extends Controller
 {
   public function index()
   {
+    $jobs = Job::where('company_id', Auth::guard('company')->user()->id)->latest();
+
+    if(request('search')){
+      $jobs = Job::where('company_id', '=', Auth::guard('company')->user()->id)
+              ->where(function($query){
+                $query->where('position', 'like', '%' . request('search') . '%')
+                      ->orWhere('education_id', 'like', '%' . request('search') . '%');
+              })->latest();
+    }
+
     return view('jobs.manage', [
       'title' => 'Jobs Data',
-      'jobs' => Job::where('company_id', '=', Auth::guard('company')->user()->id)->get()
+      'jobs' => $jobs->paginate(5)
     ]);
   }
 

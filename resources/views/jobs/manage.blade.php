@@ -13,7 +13,7 @@
       <div class="card-body">
           
         <!-- search -->
-        <form action="">
+        <form action="/jobs">
           <div class="row mx-5">
             <div class="col">
               <div class="form-group">
@@ -54,6 +54,13 @@
         </table>
 
       </div>
+
+      {{-- paginate --}}
+      <div class="d-flex justify-content-center">
+        {{ $jobs->links() }}
+      </div>
+
+
     </div>
   </div>
 @endsection
