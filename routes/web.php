@@ -3,7 +3,7 @@
 use App\Models\Job;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\JobsController;
+use App\Http\Controllers\JobController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
@@ -49,9 +49,8 @@ Route::get('/', function () {
 });
 
 // show post
-Route::get('/job/{job:id}', [JobsController::class, 'show']);
-
-
+Route::get('/jobs', [JobController::class, 'index'])->middleware('auth:company');
+Route::get('/job/{job:id}', [JobController::class, 'show']);
 
 // terms
 Route::get('/term', function(){ return view('term', ['title' => 'Term and Condition']); });

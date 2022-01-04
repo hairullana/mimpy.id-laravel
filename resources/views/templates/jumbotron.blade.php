@@ -24,7 +24,7 @@
           </div>
           <div class="row text-center">
             <div class="col-md-3 offset-md-3">
-              <a href="data-loker.php">
+              <a href="/jobs">
                 <button type="button" class="btn btn-primary btn-block font-weight-bold">
                   Kelola Loker
                 </button>

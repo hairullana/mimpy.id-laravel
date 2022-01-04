@@ -2,14 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Job;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
-class JobsController extends Controller
+class JobController extends Controller
 {
   public function index()
   {
-    
+    return view('jobs.manage', [
+      'title' => 'Jobs Data',
+      'jobs' => Job::where('company_id', '=', Auth::guard('company')->user()->id)->get()
+    ]);
   }
 
   public function create()
