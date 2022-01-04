@@ -42,7 +42,7 @@
               <td>{{ $job->education_id }}</td>
               <td>@if($job->status) Active @else Not Active @endif</td>
               <td>
-                <a href="detail-loker.php?id=" class="btn btn-outline-primary">Detail</a>
+                <a href="/jobs/{{ $job->id }}" class="btn btn-outline-primary">Detail</a>
                 <a href="edit-loker.php?id=" class="btn btn-outline-success">Edit</a>
                 <a href="hapus-loker.php?id=" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Lowongan Kerja ?')" class="btn btn-outline-danger">Hapus</a>
                 {{-- <?php if($data['status'] == 'Aktif') : ?>

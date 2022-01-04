@@ -49,8 +49,10 @@ Route::get('/', function () {
 });
 
 // show post
-Route::get('/jobs', [JobController::class, 'index'])->middleware('auth:company');
-Route::get('/job/{job:id}', [JobController::class, 'show']);
+Route::group(['middleware' => 'auth:company'], function() {
+  Route::resource('/jobs', JobController::class, ['except' => ['show']]);
+});
+Route::get('/jobs/{job:id}', [JobController::class, 'show']);
 
 // terms
 Route::get('/term', function(){ return view('term', ['title' => 'Term and Condition']); });
