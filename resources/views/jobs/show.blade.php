@@ -50,7 +50,7 @@
                   </div>
 
                   <!-- jika login sebagai pelamar, munculkan tombol buat lamaran -->
-                  @if ($job->status == 1)
+                  @if ($job->status == 1 && !(Auth::guard('company')->check() || Auth::guard('admin')->check()))
                     <div class="row my-5">
                         <div class="col text-center">
                             <a href="buat-lamaran.php?id=" class="btn btn-danger btn-lg shadow-lg">Apply for a Job</a>
