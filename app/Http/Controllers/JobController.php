@@ -80,4 +80,10 @@ class JobController extends Controller
 
     return redirect('/jobs')->with('success', 'Job has been deleted.');
   }
+
+  public function close($id){
+    Job::find($id)->update(['status' => 0]);
+
+    return redirect('/jobs')->with('success', 'Job has been closed.');
+  }
 }

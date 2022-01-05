@@ -48,9 +48,10 @@ Route::get('/', function () {
   ]);
 });
 
-// show post
+// job
 Route::group(['middleware' => 'auth:company'], function() {
   Route::resource('/jobs', JobController::class, ['except' => ['show']]);
+  Route::get('/jobs/{job:id}/close', [JobController::class, 'close']);
 });
 Route::get('/jobs/{job:id}', [JobController::class, 'show']);
 
