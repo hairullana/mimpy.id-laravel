@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Job;
+use App\Models\Application;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -71,6 +72,9 @@ class JobController extends Controller
 
   public function destroy($id)
   {
-    
+    Job::destroy($id);
+    Application::where('job_id', $id)->delete();
+
+    return redirect('/jobs')->with('success', 'Job has been deleted.');
   }
 }

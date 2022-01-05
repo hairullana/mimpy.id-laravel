@@ -58,7 +58,11 @@
               <td>
                 <a href="/jobs/{{ $job->id }}" class="btn btn-outline-primary">Detail</a>
                 <a href="edit-loker.php?id=" class="btn btn-outline-success">Edit</a>
-                <a href="hapus-loker.php?id=" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Lowongan Kerja ?')" class="btn btn-outline-danger">Hapus</a>
+                <form action="/jobs/{{ $job->id }}" method="post">
+                  @csrf
+                  @method('delete')
+                  <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-outline-danger">Delete</button>
+                </form>
                 {{-- <?php if($data['status'] == 'Aktif') : ?>
                     <a href="tutup-loker.php?id=<?=  $data['id']?>" onclick="return confirm('Apakah Anda Yakin Ingin Menutup Loker Ini ?')" class="btn btn-outline-warning">Tutup Loker</a>
                 <?php endif; ?> --}}
