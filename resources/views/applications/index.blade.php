@@ -24,7 +24,7 @@
 
           
         <!-- search -->
-        <form action="/applicants">
+        <form action="/applications">
           <div class="row mx-5 mb-4">
             <div class="col">
               <input class="form-control" name="search" type="search" placeholder="Keyword" value="{{ request('search') }}">
@@ -32,6 +32,13 @@
             <div>
               <button class="btn btn-primary" type="submit">Search</button>
             </div>
+            @if (request('search'))
+            <div class="col-12 text-center">
+              <div class="alert alert-light" role="alert">
+                Display applications with keywords “<strong>{{ request('search') }}</strong>”
+              </div>
+            </div>
+            @endif
           </div>
         </form>
 

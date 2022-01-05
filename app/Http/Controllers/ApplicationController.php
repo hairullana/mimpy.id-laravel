@@ -20,6 +20,21 @@ class ApplicationController extends Controller
         ->select('applications.id as id', 'applicants.name as applicant', 'jobs.position as position', 'applications.status as status', 'applications.created_at as created_at')
         ->latest();
 
+        if(request('search')){
+            $applications = Application::join('jobs', function($join){
+                                $join->on('applications.job_id', 'jobs.id');
+                            })->join('applicants', function($join){
+                                $join->on('applications.applicant_id', 'applicants.id');
+                            })
+                            ->where('jobs.company_id', Auth::guard('company')->user()->id)
+                            ->where(function($query){
+                                $query->where('applicants.name', 'like', '%' . request('search') . '%')
+                                    ->orWhere('jobs.position', 'like', '%' . request('search') . '%');
+                            })
+                            ->select('applications.id as id', 'applicants.name as applicant', 'jobs.position as position', 'applications.status as status', 'applications.created_at as created_at')
+                            ->latest();
+        }
+
         return view('applications.index', [
             'title' => 'Manage Applications',
             'applications' => $applications->paginate(5)

@@ -23,6 +23,13 @@
             <div>
               <button class="btn btn-primary" type="submit">Search</button>
             </div>
+            @if (request('search'))
+            <div class="col-12 text-center">
+              <div class="alert alert-light" role="alert">
+                Display jobs with keywords “<strong>{{ request('search') }}</strong>”
+              </div>
+            </div>
+            @endif
           </div>
         </form>
 
