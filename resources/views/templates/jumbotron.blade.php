@@ -19,7 +19,7 @@
               <a href="/profile"><button type="button" class="btn btn-primary btn-block font-weight-bold">Profil Saya</button></a>
             </div>
             <div class="col-md-3">
-              <a href="buat-loker.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Buat Loker</button></a>
+              <a href="/jobs/create"><button type="button" class="btn btn-primary btn-block font-weight-bold">Buat Loker</button></a>
             </div>
           </div>
           <div class="row text-center">

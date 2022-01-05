@@ -29,12 +29,26 @@ class JobController extends Controller
 
   public function create()
   {
-    
+    return view('jobs.create', [
+      'title' => 'Create Job Vacancy'
+    ]);
   }
 
   public function store(Request $request)
   {
-    
+    $validData = $request->validate([
+      'position' => ['required', 'min:3', 'max:50'],
+      'education_id' => ['required'],
+      'jobdesk' => ['required'],
+      'description' => ['required']
+    ]);
+
+    $validData['company_id'] = Auth::guard('company')->user()->id;
+    $validData['status'] = 1;
+
+    Job::create($validData);
+
+    return redirect('/jobs')->with('success', 'New job has been published.');
   }
 
   public function show(Job $job)
