@@ -91,4 +91,16 @@ class ApplicationController extends Controller
     {
         //
     }
+
+    public function accept($id){
+        Application::find($id)->update(['status' => 1]);
+
+        return redirect('/applications')->with('success', 'Application has been accepted.');
+    }
+
+    public function reject($id){
+        Application::find($id)->update(['status' => 0]);
+
+        return redirect('/applications')->with('success', 'Application has been rejected.');
+    }
 }

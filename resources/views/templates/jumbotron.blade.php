@@ -31,7 +31,7 @@
               </a>
             </div>
             <div class="col-md-3">
-              <a href="/applicants">
+              <a href="/applications">
                 <button type="button" class="btn btn-primary btn-block font-weight-bold">
                   <?php
                   $idCompany = Auth::guard('company')->user()->id;
@@ -44,7 +44,7 @@
                   @if (!empty($activeApplication))
                     <i class='fa fa-exclamation-circle'></i>
                   @endif
-                  Manage Applicants
+                  Manage Applications
                 </button>
               </a>
             </div>

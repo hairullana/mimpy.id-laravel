@@ -57,7 +57,9 @@ Route::group(['middleware' => 'auth:company'], function() {
 Route::get('/jobs/{job:id}', [JobController::class, 'show']);
 
 // applicant
-Route::resource('/applicants', ApplicationController::class)->middleware('auth:company');
+Route::resource('/applications', ApplicationController::class)->middleware('auth:company');
+Route::get('/applications/{application:id}/accept', [ApplicationController::class, 'accept'])->middleware('auth:company');
+Route::get('/applications/{application:id}/reject', [ApplicationController::class, 'reject'])->middleware('auth:company');
 
 // terms
 Route::get('/term', function(){ return view('term', ['title' => 'Term and Condition']); });

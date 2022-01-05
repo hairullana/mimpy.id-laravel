@@ -7,6 +7,21 @@
         <h3>Manage Applicants</h3>
       </div>
       <div class="card-body">
+
+        {{-- alert --}}
+        <div class="row justify-content-center d-flex">
+          <div class="col-md-4">
+            @if (session()->has('success'))
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            @endif
+          </div>
+        </div>
+
           
         <!-- search -->
         <form action="/applicants">
@@ -34,10 +49,11 @@
               <td>{{ $loop->iteration }}</td>
               <td>{{ $application->applicant }}</td>
               <td>{{ $application->position }}</td>
-              <td><a href="" class="btn btn-outline-primary">CV</a> <a href="" class="btn btn-outline-primary">Application Letter</a></td>
+              <td><a href="{{ $application->id }}" class="btn btn-outline-primary">CV</a> <a href="" class="btn btn-outline-primary">Application Letter</a></td>
               <td>
                 @if ($application->status == -1)
-                  <a href="" onclick="return confirm('Are you sure to accept this application?')" class="btn btn-outline-success">Accept<a> <a href="" onclick="return confirm('Are you sure to reject this application?')" class="btn btn-outline-danger">Reject<a>
+                  <a href="/applications/{{ $application->id }}/accept" onclick="return confirm('Are you sure to accept this application?')" class="btn btn-outline-success">Accept<a> 
+                    <a href="/applications/{{ $application->id }}/reject" onclick="return confirm('Are you sure to reject this application?')" class="btn btn-outline-danger">Reject<a>
                 @elseif ($application->status == 0)
                   Rejected
                 @elseif ($application->status == 1)
