@@ -11,6 +11,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JobDashboardController;
 use App\Http\Controllers\CompanyDashboardController;
 use App\Http\Controllers\ApplicantDashboardController;
+use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\ApplicationDashboardController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -54,6 +55,9 @@ Route::group(['middleware' => 'auth:company'], function() {
   Route::get('/jobs/{job:id}/close', [JobController::class, 'close']);
 });
 Route::get('/jobs/{job:id}', [JobController::class, 'show']);
+
+// applicant
+Route::resource('/applicants', ApplicationController::class)->middleware('auth:company');
 
 // terms
 Route::get('/term', function(){ return view('term', ['title' => 'Term and Condition']); });

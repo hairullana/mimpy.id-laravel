@@ -16,22 +16,22 @@
         <div class="col-12">
           <div class="row text-center mb-3">
             <div class="col-md-3 offset-md-3">
-              <a href="/profile"><button type="button" class="btn btn-primary btn-block font-weight-bold">Profil Saya</button></a>
+              <a href="/profile"><button type="button" class="btn btn-primary btn-block font-weight-bold">My Profile</button></a>
             </div>
             <div class="col-md-3">
-              <a href="/jobs/create"><button type="button" class="btn btn-primary btn-block font-weight-bold">Buat Loker</button></a>
+              <a href="/jobs/create"><button type="button" class="btn btn-primary btn-block font-weight-bold">Create Job</button></a>
             </div>
           </div>
           <div class="row text-center">
             <div class="col-md-3 offset-md-3">
               <a href="/jobs">
                 <button type="button" class="btn btn-primary btn-block font-weight-bold">
-                  Kelola Loker
+                  Manage Jobs
                 </button>
               </a>
             </div>
             <div class="col-md-3">
-              <a href="data-lamaran.php">
+              <a href="/applicants">
                 <button type="button" class="btn btn-primary btn-block font-weight-bold">
                   <?php
                   $idCompany = Auth::guard('company')->user()->id;
@@ -44,7 +44,7 @@
                   @if (!empty($activeApplication))
                     <i class='fa fa-exclamation-circle'></i>
                   @endif
-                  Kelola Lamaran
+                  Manage Applicants
                 </button>
               </a>
             </div>
