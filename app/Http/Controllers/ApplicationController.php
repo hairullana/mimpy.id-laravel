@@ -22,7 +22,7 @@ class ApplicationController extends Controller
 
         return view('applications.index', [
             'title' => 'Manage Applications',
-            'applications' => $applications->paginate(2)
+            'applications' => $applications->paginate(5)
         ]);
     }
 

@@ -64,6 +64,11 @@
           @endforeach
         </table>
 
+        {{-- paginate --}}
+        <div class="d-flex justify-content-center">
+          {{ $applications->links() }}
+        </div>
+
       </div>
     </div>
   </div>

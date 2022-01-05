@@ -39,7 +39,7 @@
                           ->join('jobs', 'applications.job_id', '=', 'jobs.id')
                           ->where('applications.status', '=', -1)
                           ->where('jobs.company_id', '=', $idCompany)
-                          ->get();                    
+                          ->first();                    
                   ?>
                   @if (!empty($activeApplication))
                     <i class='fa fa-exclamation-circle'></i>
