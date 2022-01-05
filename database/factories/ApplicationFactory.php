@@ -16,7 +16,6 @@ class ApplicationFactory extends Factory
         return [
             'applicant_id' => mt_rand(1,5),
             'job_id' => mt_rand(1,10),
-            'date' => $this->faker->date(),
             'salary' => mt_rand(1,10) * 1000000,
             'applicant_letter' => $this->faker->sentence(30),
             'status' => mt_rand(-1,1),

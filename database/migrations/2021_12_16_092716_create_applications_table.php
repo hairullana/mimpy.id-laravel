@@ -17,7 +17,6 @@ class CreateApplicationsTable extends Migration
             $table->id();
             $table->foreignId('applicant_id');
             $table->foreignId('job_id');
-            $table->date('date');
             $table->integer('salary');
             $table->text('applicant_letter');
             $table->integer('status');
