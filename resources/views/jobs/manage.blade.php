@@ -57,8 +57,8 @@
               <td>@if($job->status) Active @else Not Active @endif</td>
               <td>
                 <a href="/jobs/{{ $job->id }}" class="btn btn-outline-primary">Detail</a>
-                <a href="edit-loker.php?id=" class="btn btn-outline-success">Edit</a>
-                <form action="/jobs/{{ $job->id }}" method="post">
+                <a href="/jobs/{{ $job->id }}/edit" class="btn btn-outline-success">Edit</a>
+                <form action="/jobs/{{ $job->id }}" method="post" class="d-inline-block">
                   @csrf
                   @method('delete')
                   <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-outline-danger">Delete</button>
