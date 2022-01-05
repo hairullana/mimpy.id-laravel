@@ -13,34 +13,37 @@
       <div class="card-body">
   
         {{-- form --}}
-        <form action="" method="POST">
-            <div class="form-group">
-                <input type="text" class="form-control" placeholder="Position" name="position" value="{{ $job->position }}">
-            </div>
-            <div class="form-group">
-              <select class="form-control" name="education">
-                <option value="1">No Education</option>
-                <option value="2">SD</option>
-                <option value="3">SMP</option>
-                <option value="4">SMA/K</option>
-                <option value="5">D1</option>
-                <option value="6">D2</option>
-                <option value="7">D3</option>
-                <option value="8">D4</option>
-                <option value="9">S1</option>
-                <option value="10">S2</option>
-                <option value="11">S3</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <textarea class="form-control" name="jobdesk" placeholder="Jobdesk" name="jobdesk">{{ $job->jobdesk }}</textarea>
-            </div>
-            <div class="form-group">
-              <textarea class="form-control" name="description" placeholder="Description" name="description">{{ $job->description }}</textarea>
-            </div>
-            <div class="form-group text-center">
-              <button class="btn btn-primary">Save Changes</button>
-            </div>
+        <form action="/jobs/{{ $job->id }}" method="POST">
+          @csrf
+          @method('put')
+          <div class="form-group">
+            <input type="text" class="form-control @error('position') is-invalid @enderror" placeholder="Position" name="position" value="{{ old('position', $job->position) }}">
+            @error('position')
+              <div class="small text-danger ml-2">
+                {{ $message }}
+              </div>
+            @enderror
+          </div>
+          <div class="form-group">
+            <select class="form-control @error('education_id') is-invalid @enderror" name="education_id">
+              @foreach ($educations as $education)
+                @if ($job->education_id == $education->id)
+                  <option value="{{ $education->id }}" selected>{{ $education->name }}</option>
+                @else
+                  <option value="{{ $education->id }}">{{ $education->name }}</option>
+                @endif
+              @endforeach
+            </select>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control @error('jobdesk') is-invalid @enderror" name="jobdesk" placeholder="Jobdesk" name="jobdesk">{{ old('jobdesk', $job->jobdesk) }}</textarea>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control @error('description') is-invalid @enderror" name="description" placeholder="Description" name="description">{{ old('description', $job->description) }}</textarea>
+          </div>
+          <div class="form-group text-center">
+            <button class="btn btn-primary">Save Changes</button>
+          </div>
         </form>
       </div>
     </div>

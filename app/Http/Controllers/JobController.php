@@ -6,23 +6,29 @@ use App\Models\Job;
 use App\Models\Application;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Education;
 use Illuminate\Support\Facades\Auth;
 
 class JobController extends Controller
 {
   public function index()
   {
-    $jobs = Job::where('company_id', Auth::guard('company')->user()->id)->latest();
+    $jobs = Job::where('company_id', Auth::guard('company')->user()->id)
+            ->join('educations', 'jobs.education_id', '=', 'educations.id')
+            ->select('educations.name as education', 'jobs.created_at as created_at', 'jobs.position as position', 'jobs.id as id')
+            ->latest();
 
     if(request('search')){
       $jobs = Job::where('company_id', '=', Auth::guard('company')->user()->id)
+              ->join('educations', 'jobs.education_id', '=', 'educations.id')
+              ->select('educations.name as education', 'jobs.created_at as created_at', 'jobs.position as position', 'jobs.id as id')
               ->where(function($query){
                 $query->where('position', 'like', '%' . request('search') . '%')
                       ->orWhere('education_id', 'like', '%' . request('search') . '%');
               })->latest();
     }
 
-    return view('jobs.manage', [
+    return view('jobs.index', [
       'title' => 'Jobs Data',
       'jobs' => $jobs->paginate(5)
     ]);
@@ -31,7 +37,8 @@ class JobController extends Controller
   public function create()
   {
     return view('jobs.create', [
-      'title' => 'Create Job Vacancy'
+      'title' => 'Create Job Vacancy',
+      'educations' => Education::all()
     ]);
   }
 
@@ -52,11 +59,12 @@ class JobController extends Controller
     return redirect('/jobs')->with('success', 'New job has been published.');
   }
 
-  public function show(Job $job)
+  public function show($id)
   {
     return view('jobs.show', [
       'title' => 'Detail Job',
-      'job' => $job
+      'job' => Job::find($id),
+      'education' => Education::find(Job::find($id)->education_id)->name
     ]);
   }
 
@@ -64,13 +72,22 @@ class JobController extends Controller
   {
     return view('jobs.edit', [
       'title' => 'Edit Job',
-      'job' => Job::find($id)
+      'job' => Job::find($id),
+      'educations' => Education::all()
     ]);
   }
 
   public function update(Request $request, $id)
   {
-    
+    $validData = $request->validate([
+      'position' => ['required', 'min:3', 'max:50'],
+      'education_id' => ['required'],
+      'jobdesk' => ['required'],
+      'description' => ['required']
+    ]);
+
+    Job::find($id)->update($validData);
+    return redirect('/jobs')->with('success', 'Job has been updated.');
   }
 
   public function destroy($id)

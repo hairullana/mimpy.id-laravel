@@ -19,17 +19,9 @@
           </div>
           <div class="form-group">
             <select class="form-control @error('education_id') is-invalid @enderror" name="education_id">
-              <option value="0" selected>No Education</option>
-              <option value="1">SD</option>
-              <option value="2">SMP</option>
-              <option value="3">SMA/K</option>
-              <option value="4">D1</option>
-              <option value="5">D2</option>
-              <option value="6">D3</option>
-              <option value="7">D4</option>
-              <option value="8">S1</option>
-              <option value="9">S2</option>
-              <option value="10">S3</option>
+              @foreach ($educations as $education)
+                <option value="{{ $education->id }}">{{ $education->name }}</option>
+              @endforeach
             </select>
           </div>
           <div class="form-group">

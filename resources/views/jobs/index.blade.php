@@ -53,7 +53,7 @@
             <tr>
               <td>{{ $loop->iteration }}</td>
               <td>{{ $job->position }}</td>
-              <td>{{ $job->education_id }}</td>
+              <td>{{ $job->education }}</td>
               <td>@if($job->status) Active @else Not Active @endif</td>
               <td>
                 <a href="/jobs/{{ $job->id }}" class="btn btn-outline-primary">Detail</a>

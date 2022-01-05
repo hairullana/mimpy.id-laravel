@@ -35,7 +35,7 @@
                               </tr>
                               <tr>
                                   <th>Education</th>
-                                  <td>{{ $job->education_id }}</td>
+                                  <td>{{ $education }}</td>
                               </tr>
                               <tr>
                                   <th>Jobdesk</th>
