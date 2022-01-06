@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Job;
 use App\Models\Application;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
@@ -28,14 +29,30 @@ class Application2Controller extends Controller
             'applications' => $applications->paginate(3)
         ]);
     }
-    public function create()
+    public function create($id)
     {
-        //
+        return view('applicant.applications.create', [
+            'title' => 'Create Application',
+            'job' => Job::find($id)
+        ]);
     }
 
     public function store(Request $request)
     {
-        //
+        $validData = $request->validate([
+            'job_id' => ['required'],
+            'salary' => ['required', 'numeric'],
+            'applicant_letter' => ['required']
+        ]);
+
+        $validData['applicant_id'] = Auth::guard('applicant')->user()->id;
+        $validData['status'] = -1;
+        $validData['confirm'] = 0;
+        $validData['company_letter'] = '';
+        
+        Application::create($validData);
+
+        return redirect('/applicant/applications')->with('success', 'Application has been confirmation.');
     }
 
     public function show($id)
