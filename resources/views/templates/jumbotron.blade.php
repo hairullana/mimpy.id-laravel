@@ -57,7 +57,7 @@
               <a href="/profile"><button type="button" class="btn btn-primary btn-block font-weight-bold">My Profile</button></a>
             </div>
             <div class="col-md-3">
-              <a href="edit-cv.php">
+              <a href="/cv">
                 <button type="button" class="btn btn-primary btn-block font-weight-bold">
                   @if (Auth::guard('applicant')->user()->cv == '')
                     <i class='fa fa-exclamation-circle'></i>
