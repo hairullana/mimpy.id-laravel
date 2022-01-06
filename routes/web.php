@@ -8,10 +8,11 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ApplicationController;
+use App\Http\Controllers\Application2Controller;
 use App\Http\Controllers\JobDashboardController;
 use App\Http\Controllers\CompanyDashboardController;
 use App\Http\Controllers\ApplicantDashboardController;
-use App\Http\Controllers\ApplicationController;
 use App\Http\Controllers\ApplicationDashboardController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -56,10 +57,13 @@ Route::group(['middleware' => 'auth:company'], function() {
 });
 Route::get('/jobs/{job:id}', [JobController::class, 'show']);
 
-// applicant
+// company/applications
 Route::resource('/applications', ApplicationController::class)->middleware('auth:company');
 Route::get('/applications/{application:id}/accept', [ApplicationController::class, 'accept'])->middleware('auth:company');
 Route::get('/applications/{application:id}/reject', [ApplicationController::class, 'reject'])->middleware('auth:company');
+// applicant/applications
+Route::resource('/applicant/applications', Application2Controller::class)->middleware('auth:applicant');
+
 
 // terms
 Route::get('/term', function(){ return view('term', ['title' => 'Term and Condition']); });

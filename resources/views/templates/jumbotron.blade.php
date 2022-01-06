@@ -69,7 +69,7 @@
           </div>
           <div class="row text-center">
             <div class="col-md-3 offset-md-3">
-              <a href="data-lamaran.php">
+              <a href="/applicant/applications">
                 <button type="button" class="btn btn-primary btn-block font-weight-bold">
                   <?php
                     $idApplicant = Auth::guard('applicant')->user()->id;
