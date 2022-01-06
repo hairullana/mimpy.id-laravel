@@ -39,13 +39,18 @@
         <span>File : <i>jpg, jpeg, png, pdf, doc, docx</i></span>
         <div class="input-group">
           <div class="custom-file">
-              <input type="file" name="cv" class="custom-file-input" id="cv">
+              <input type="file" name="cv" class="custom-file-input @error('cv') is-invalid @enderror" id="cv">
               <label class="custom-file-label" for="cv">Upload CV</label>
           </div>
           <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="submit">Save Change</button>
+            <button class="btn btn-outline-secondary" type="submit">Save Change</button>
           </div>
         </div>
+        @error('cv')
+          <div class="small text-danger ml-2">
+            {{ $message }}
+          </div>
+        @enderror
       </form>
     </div>
   </div>
