@@ -9,9 +9,9 @@
       <div class="card-body p-5">
         {{ $letter->company_letter }}
 
-      </div>
-      <div class="justify-content-end d-flex m-4">
-        <a href="/applicant/applications" class="btn btn-success">Back To Applications</a>
+        <div class="justify-content-end d-flex mt-5">
+          <a href="/applicant/applications" class="btn btn-success">Back To Applications</a>
+        </div>
       </div>
     </div>
   </div>

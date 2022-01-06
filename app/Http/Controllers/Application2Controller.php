@@ -11,9 +11,21 @@ class Application2Controller extends Controller
 {
     public function index()
     {
+        $applications = Application::where('applicant_id', '=', Auth::guard('applicant')->user()->id)->latest();
+
+        if(request('search')){
+            $applications = Application::where('applicant_id', '=', Auth::guard('applicant')->user()->id)
+                            ->join('jobs', 'jobs.id', '=', 'applications.job_id')
+                            ->join('companies', 'companies.id', '=', 'jobs.company_id')
+                            ->where(function($query){
+                                $query->where('companies.name', 'like', '%' . request('search') . '%')
+                                        ->orWhere('jobs.position', 'like', '%' . request('search') . '%');
+                            })->select('companies.name as company', 'applications.id as id', 'jobs.position as position', 'applications.salary as salary', 'applications.status as status', 'applications.confirm as confirm')->latest('applications.created_at');
+        }
+
         return view('applicant.applications.index', [
             'title' => 'Manage Application',
-            'applications' => Application::where('applicant_id', '=', Auth::guard('applicant')->user()->id)->get()
+            'applications' => $applications->paginate(3)
         ]);
     }
     public function create()
@@ -28,7 +40,7 @@ class Application2Controller extends Controller
 
     public function show($id)
     {
-        return view('applications.companyLetter', [
+        return view('applicant.applications.companyLetter', [
             'title' => 'Company Letter',
             'letter' => Application::find($id)
         ]);
