@@ -24,6 +24,20 @@
           </div>
         </form>
 
+        {{-- alert --}}
+        <div class="row justify-content-center d-flex">
+          <div class="col-md-4">
+            @if (session()->has('success'))
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                {{ session('success') }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            @endif
+          </div>
+        </div>
+
         {{-- applications --}}
         <table class="table text-center">
           <tr>
@@ -53,7 +67,7 @@
               </td>
               <td>
                 @if ($application->confirm == 0 && $application->status > -1)
-                  <a href="konfirmasi.php?id=" class="btn btn-primary">Confirm</a>
+                  <a href="/applicant/applications/{{ $application->id }}/confirm" class="btn btn-primary" onclick="return confirm('Are you sure?')">Confirm</a>
                 @elseif ($application->status == -1)
                   <button class="btn btn-secondary" disabled>Confirm</button>
                 @elseif ($application->confirm == 1)

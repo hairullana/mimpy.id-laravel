@@ -63,6 +63,7 @@ Route::get('/applications/{application:id}/accept', [ApplicationController::clas
 Route::get('/applications/{application:id}/reject', [ApplicationController::class, 'reject'])->middleware('auth:company');
 // applicant/applications
 Route::resource('/applicant/applications', Application2Controller::class)->middleware('auth:applicant');
+Route::get('/applicant/applications/{application:id}/confirm', [Application2Controller::class, 'confirm'])->middleware('auth:applicant');
 
 
 // terms

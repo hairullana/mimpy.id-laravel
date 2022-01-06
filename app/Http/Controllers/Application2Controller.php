@@ -60,4 +60,10 @@ class Application2Controller extends Controller
     {
         //
     }
+
+    public function confirm($id){
+        Application::find($id)->update(['confirm' => 1]);
+
+        return redirect('/applicant/applications')->with('success', 'Application has been confirmation.');
+    }
 }
