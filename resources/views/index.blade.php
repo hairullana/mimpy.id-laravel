@@ -49,7 +49,7 @@
                 <img src="/storage/@if(request('search')){{ $job->photo }}@else{{ $job->company->photo }}@endif" width="200" height="205" alt="">
               </div>
               <div class="col p-4 d-flex flex-column position-static">
-                <h3 class="mb-0">@if(!request('search')) {{ $job->position . ' | ' . $job->company->name }} @else {{ $job->job->position . ' | ' . $job->company->name }} @endif</h3>
+                <h3 class="mb-0">@if(request('search')) {{ $job->position . ' | ' . $job->name }} @else {{ $job->position . ' | ' . $job->company->name }} @endif</h3>
                 <div class="mb-1 text-muted">@if(request('search')) {{ $job->address }} @else {{ $job->company->address }} @endif</div>
                 <p class="card-text mb-auto">{{ $job->jobdesk }}</p>
                 <a href="/jobs/@if(request('search')){{ $job->idJob }}@else{{ $job->id }}@endif" class="stretched-link">read more</a>

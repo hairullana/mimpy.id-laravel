@@ -15,6 +15,7 @@ use App\Http\Controllers\CompanyDashboardController;
 use App\Http\Controllers\ApplicantDashboardController;
 use App\Http\Controllers\ApplicationDashboardController;
 use App\Http\Controllers\CVController;
+use App\Http\Controllers\SearchController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -100,3 +101,6 @@ Route::resource('/dashboard/applications', ApplicationDashboardController::class
 // cv
 Route::get('/cv', [CVController::class, 'index'])->middleware('auth:applicant');
 Route::post('/cv', [CVController::class, 'update'])->middleware('auth:applicant');
+
+// search
+Route::get('/search', [SearchController::class, 'index'])->middleware('auth:applicant');

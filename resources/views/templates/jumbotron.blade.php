@@ -87,7 +87,7 @@
               </a>
             </div>
             <div class="col-md-3">
-              <a href="cari-loker.php"><button type="button" class="btn btn-primary btn-block font-weight-bold">Find Spesific Job</button></a>
+              <a href="/search"><button type="button" class="btn btn-primary btn-block font-weight-bold">Find Spesific Job</button></a>
             </div>
           </div>
         </div>
