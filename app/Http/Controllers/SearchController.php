@@ -52,10 +52,6 @@ class SearchController extends Controller
                     ->latest();
         }
 
-        // if(request('city') || request('position') || request('education')){
-        //     $jobs->appends($request->all());
-        // }
-
         return view('search.index', [
             'title' => 'Find Spesific Job',
             'jobs' => $jobs->paginate(5),

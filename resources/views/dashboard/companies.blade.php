@@ -78,7 +78,7 @@
       </div>
 
       <div class="d-flex justify-content-center">
-        {{ $companies->links() }}
+        {{ $companies->appends(request()->all())->links() }}
       </div>
 
     </div>

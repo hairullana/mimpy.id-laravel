@@ -77,7 +77,7 @@
 
     {{-- paginate --}}
     <div class="d-flex justify-content-center">
-      {{ $jobs->links() }}
+      {{ $jobs->appends(request()->all())->links() }}
     </div>
 
 

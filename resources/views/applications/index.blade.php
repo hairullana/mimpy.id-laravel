@@ -73,7 +73,7 @@
 
         {{-- paginate --}}
         <div class="d-flex justify-content-center">
-          {{ $applications->links() }}
+          {{ $applications->appends(request()->all())->links() }}
         </div>
 
       </div>
