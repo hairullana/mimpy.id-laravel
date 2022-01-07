@@ -61,7 +61,8 @@ Route::get('/jobs/{job:id}', [JobController::class, 'show']);
 
 // company/applications
 Route::resource('/applications', ApplicationController::class)->middleware('auth:company');
-Route::get('/applications/{application:id}/accept', [ApplicationController::class, 'accept'])->middleware('auth:company');
+Route::get('/applications/{application:id}/accept', [ApplicationController::class, 'acceptPage'])->middleware('auth:company');
+Route::post('/applications/accept', [ApplicationController::class, 'accept'])->middleware('auth:company');
 Route::get('/applications/{application:id}/reject', [ApplicationController::class, 'reject'])->middleware('auth:company');
 // applicant/applications
 Route::resource('/applicant/applications', Application2Controller::class)->middleware('auth:applicant');

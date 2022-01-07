@@ -110,8 +110,18 @@ class ApplicationController extends Controller
         //
     }
 
-    public function accept($id){
-        Application::find($id)->update(['status' => 1]);
+    public function acceptPage($id){
+        return view('applications.accept', [
+            'title' => 'Accept Applicant',
+            'application' => Application::find($id)
+        ]);
+    }
+
+    public function accept(Request $request){
+        Application::find($request['id'])->update([
+            'status' => 1,
+            'company_letter' => $request['company_letter']
+        ]);
 
         return redirect('/applications')->with('success', 'Application has been accepted.');
     }
