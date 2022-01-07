@@ -17,7 +17,7 @@ class ApplicationController extends Controller
             $join->on('applications.applicant_id', 'applicants.id');
         })
         ->where('jobs.company_id', Auth::guard('company')->user()->id)
-        ->select('applications.id as id', 'applicants.name as applicant', 'jobs.position as position', 'applications.status as status', 'applications.created_at as created_at')
+        ->select('applications.id as id', 'applicants.name as applicant', 'jobs.position as position', 'applications.status as status', 'applications.created_at as created_at', 'applicants.cv as cv')
         ->latest();
 
         if(request('search')){
@@ -31,7 +31,7 @@ class ApplicationController extends Controller
                                 $query->where('applicants.name', 'like', '%' . request('search') . '%')
                                     ->orWhere('jobs.position', 'like', '%' . request('search') . '%');
                             })
-                            ->select('applications.id as id', 'applicants.name as applicant', 'jobs.position as position', 'applications.status as status', 'applications.created_at as created_at')
+                            ->select('applications.id as id', 'applicants.name as applicant', 'jobs.position as position', 'applications.status as status', 'applications.created_at as created_at', 'applicants.cv as cv')
                             ->latest();
         }
 
@@ -70,7 +70,10 @@ class ApplicationController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('applications.letter', [
+            'title' => 'Application Letter',
+            'application' => Application::find($id)
+        ]);
     }
 
     /**

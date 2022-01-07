@@ -56,7 +56,7 @@
               <td>{{ $loop->iteration }}</td>
               <td>{{ $application->applicant }}</td>
               <td>{{ $application->position }}</td>
-              <td><a href="{{ $application->id }}" class="btn btn-outline-primary">CV</a> <a href="" class="btn btn-outline-primary">Application Letter</a></td>
+              <td><a href="/storage/{{ $application->cv }}" class="btn btn-outline-primary">CV</a> <a href="/applications/{{ $application->id }}" class="btn btn-outline-primary">Application Letter</a></td>
               <td>
                 @if ($application->status == -1)
                   <a href="/applications/{{ $application->id }}/accept" onclick="return confirm('Are you sure to accept this application?')" class="btn btn-outline-success">Accept<a> 
