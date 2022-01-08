@@ -20,14 +20,10 @@ class LoginController extends Controller
       if(!$request->role){
         return back()->with('loginError', 'Choose user role!');
       } else {
-
-        // 
         $credentials = $request->validate([
           'email' => 'required|email',
           'password' => 'required'
         ]);
-
-        // dd($credentials);
 
         if ($request->role == 'applicant') {
           if(Auth::guard('applicant')->attempt($credentials)){

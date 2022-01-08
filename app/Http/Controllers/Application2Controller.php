@@ -52,7 +52,7 @@ class Application2Controller extends Controller
         
         Application::create($validData);
 
-        return redirect('/applicant/applications')->with('success', 'Application has been confirmation.');
+        return redirect('/applicant/applications')->with('success', 'Application has been created.');
     }
 
     public function show($id)

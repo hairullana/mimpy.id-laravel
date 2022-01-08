@@ -28,7 +28,7 @@
             <div class="mt-5">
                 <h5>Appplication Letter</h5>
                 <p>
-                    <?= nl2br(str_replace(' ','  ', $application->applicant_letter)); ?>
+                  {!! $application->applicant_letter !!}
                 </p>
             </div>
         </div>

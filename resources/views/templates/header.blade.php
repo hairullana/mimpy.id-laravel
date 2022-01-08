@@ -20,4 +20,13 @@
 
   <!-- Fontawesome -->
   <script src="https://kit.fontawesome.com/ac1ee11f2c.js" crossorigin="anonymous"></script>
+
+  {{-- Trix --}}
+  <link rel="stylesheet" href="/css/trix.css">
+  <script src="/js/trix.js"></script>
+  <style>
+    trix-toolbar [data-trix-button-group="file-tools"]{
+      display: none;
+    }
+  </style>
 </head>

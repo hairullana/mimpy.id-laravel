@@ -20,5 +20,9 @@
 
       <!-- title -->
       <title>{{ $title }} | Mimpy.ID</title>
+
+      {{-- Trix --}}
+      <link rel="stylesheet" href="/css/trix.css">
+      <script src="/js/trix.js"></script>
   </head>
   <body>
