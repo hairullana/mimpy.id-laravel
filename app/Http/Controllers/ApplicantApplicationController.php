@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class Application2Controller extends Controller
+class ApplicantApplicationController extends Controller
 {
     public function index()
     {

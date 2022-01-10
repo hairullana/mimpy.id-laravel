@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class ApplicationController extends Controller
+class CompanyApplicationController extends Controller
 {
     public function index()
     {
@@ -35,7 +35,7 @@ class ApplicationController extends Controller
                             ->latest();
         }
 
-        return view('applications.index', [
+        return view('company.applications.index', [
             'title' => 'Manage Applications',
             'applications' => $applications->paginate(5)
         ]);
@@ -70,7 +70,7 @@ class ApplicationController extends Controller
      */
     public function show($id)
     {
-        return view('applications.letter', [
+        return view('company.applications.letter', [
             'title' => 'Application Letter',
             'application' => Application::find($id)
         ]);
@@ -111,7 +111,7 @@ class ApplicationController extends Controller
     }
 
     public function acceptPage($id){
-        return view('applications.accept', [
+        return view('company.applications.accept', [
             'title' => 'Accept Applicant',
             'application' => Application::find($id)
         ]);
@@ -123,12 +123,12 @@ class ApplicationController extends Controller
             'company_letter' => $request['company_letter']
         ]);
 
-        return redirect('/applications')->with('success', 'Application has been accepted.');
+        return redirect('/company/applications')->with('success', 'Application has been accepted.');
     }
 
     public function reject($id){
         Application::find($id)->update(['status' => 0]);
 
-        return redirect('/applications')->with('success', 'Application has been rejected.');
+        return redirect('/company/applications')->with('success', 'Application has been rejected.');
     }
 }

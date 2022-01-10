@@ -8,8 +8,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ApplicationController;
-use App\Http\Controllers\Application2Controller;
+use App\Http\Controllers\CompanyApplicationController;
+use App\Http\Controllers\ApplicantApplicationController;
 use App\Http\Controllers\JobDashboardController;
 use App\Http\Controllers\CompanyDashboardController;
 use App\Http\Controllers\ApplicantDashboardController;
@@ -60,14 +60,14 @@ Route::group(['middleware' => 'auth:company'], function() {
 Route::get('/jobs/{job:id}', [JobController::class, 'show']);
 
 // company/applications
-Route::resource('/applications', ApplicationController::class)->middleware('auth:company');
-Route::get('/applications/{application:id}/accept', [ApplicationController::class, 'acceptPage'])->middleware('auth:company');
-Route::post('/applications/accept', [ApplicationController::class, 'accept'])->middleware('auth:company');
-Route::get('/applications/{application:id}/reject', [ApplicationController::class, 'reject'])->middleware('auth:company');
+Route::resource('company/applications', CompanyApplicationController::class)->middleware('auth:company');
+Route::get('company/applications/{application:id}/accept', [CompanyApplicationController::class, 'acceptPage'])->middleware('auth:company');
+Route::post('company/applications/accept', [CompanyApplicationController::class, 'accept'])->middleware('auth:company');
+Route::get('company/applications/{application:id}/reject', [CompanyApplicationController::class, 'reject'])->middleware('auth:company');
 // applicant/applications
-Route::resource('/applicant/applications', Application2Controller::class)->middleware('auth:applicant');
-Route::get('/applicant/applications/{application:id}/confirm', [Application2Controller::class, 'confirm'])->middleware('auth:applicant');
-Route::get('/applicant/applications/{application:id}/create', [Application2Controller::class, 'create'])->middleware('auth:applicant');
+Route::resource('/applicant/applications', ApplicantApplicationController::class)->middleware('auth:applicant');
+Route::get('/applicant/applications/{application:id}/confirm', [ApplicantApplicationController::class, 'confirm'])->middleware('auth:applicant');
+Route::get('/applicant/applications/{application:id}/create', [ApplicantApplicationController::class, 'create'])->middleware('auth:applicant');
 
 
 // terms

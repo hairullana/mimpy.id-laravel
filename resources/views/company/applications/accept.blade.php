@@ -8,7 +8,7 @@
     </div>
     <div class="card-body">
       <!-- kirim pesan kepada pelamar -->
-      <form action="/applications/accept" method="POST">
+      <form action="/company/applications/accept" method="POST">
         @csrf
         <input type="hidden" name="id" value="{{ $application->id }}">
         {{-- <div class="input-group"> --}}

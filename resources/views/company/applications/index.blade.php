@@ -24,7 +24,7 @@
 
           
         <!-- search -->
-        <form action="/applications">
+        <form action="/company/applications">
           <div class="row mx-5 mb-4">
             <div class="col">
               <input class="form-control" name="search" type="search" placeholder="Keyword" value="{{ request('search') }}">
@@ -59,8 +59,8 @@
               <td><a href="/storage/{{ $application->cv }}" class="btn btn-outline-primary">CV</a> <a href="/applications/{{ $application->id }}" class="btn btn-outline-primary">Application Letter</a></td>
               <td>
                 @if ($application->status == -1)
-                  <a href="/applications/{{ $application->id }}/accept" onclick="return confirm('Are you sure to accept this application?')" class="btn btn-outline-success">Accept<a> 
-                    <a href="/applications/{{ $application->id }}/reject" onclick="return confirm('Are you sure to reject this application?')" class="btn btn-outline-danger">Reject<a>
+                  <a href="/company/applications/{{ $application->id }}/accept" onclick="return confirm('Are you sure to accept this application?')" class="btn btn-outline-success">Accept<a> 
+                    <a href="/company/applications/{{ $application->id }}/reject" onclick="return confirm('Are you sure to reject this application?')" class="btn btn-outline-danger">Reject<a>
                 @elseif ($application->status == 0)
                   Rejected
                 @elseif ($application->status == 1)

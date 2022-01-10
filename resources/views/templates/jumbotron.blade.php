@@ -31,7 +31,7 @@
               </a>
             </div>
             <div class="col-md-3">
-              <a href="/applications">
+              <a href="/company/applications">
                 <button type="button" class="btn btn-primary btn-block font-weight-bold">
                   <?php
                   $idCompany = Auth::guard('company')->user()->id;
