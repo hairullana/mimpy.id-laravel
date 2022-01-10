@@ -16,7 +16,9 @@ class CreateApplicationsTable extends Migration
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
             $table->foreignId('applicant_id');
+            $table->foreign('applicant_id')->references('id')->on('applicants');
             $table->foreignId('job_id');
+            $table->foreign('job_id')->references('id')->on('jobs');
             $table->integer('salary');
             $table->text('applicant_letter');
             $table->integer('status');

@@ -16,8 +16,10 @@ class CreateJobsTable extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('company_id');
+            $table->foreign('company_id')->references('id')->on('companies');
             $table->string('position');
             $table->foreignId('education_id');
+            $table->foreign('education_id')->references('id')->on('educations');
             $table->string('jobdesk');
             $table->text('description');
             $table->boolean('status');

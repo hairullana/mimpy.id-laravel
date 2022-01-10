@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Company;
+use App\Models\Education;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class JobFactory extends Factory
@@ -13,10 +15,11 @@ class JobFactory extends Factory
      */
     public function definition()
     {
+        // $education = Education::pluck('id')->toArray();
         return [
-            'company_id' => mt_rand(1,5),
+            'company_id' => Company::factory(),
+            'education_id' => Education::all()->random()->id,
             'position' => $this->faker->jobTitle(),
-            'education_id' => mt_rand(1,4),
             'jobdesk' => $this->faker->sentence(10),
             'description' => $this->faker->sentence(30),
             'status' => mt_rand(0,1)
