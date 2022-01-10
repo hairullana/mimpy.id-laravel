@@ -17,7 +17,7 @@ class JobFactory extends Factory
     {
         // $education = Education::pluck('id')->toArray();
         return [
-            'company_id' => Company::factory(),
+            'company_id' => Company::all()->random()->id,
             'education_id' => Education::all()->random()->id,
             'position' => $this->faker->jobTitle(),
             'jobdesk' => $this->faker->sentence(10),

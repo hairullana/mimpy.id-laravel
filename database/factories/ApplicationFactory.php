@@ -16,8 +16,8 @@ class ApplicationFactory extends Factory
     public function definition()
     {
         return [
-            'applicant_id' => Applicant::factory(),
-            'job_id' => Job::factory(),
+            'applicant_id' => Applicant::all()->random()->id,
+            'job_id' => Job::all()->random()->id,
             'salary' => mt_rand(1,10) * 1000000,
             'applicant_letter' => $this->faker->sentence(30),
             'status' => mt_rand(-1,1),

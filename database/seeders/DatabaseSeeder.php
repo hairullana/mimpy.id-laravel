@@ -27,11 +27,11 @@ class DatabaseSeeder extends Seeder
         Education::create(['name' => 'Bachelor degree']);
         Education::create(['name' => 'Master degree']);
         Education::create(['name' => 'Doctorate']);
-        
-        Company::factory(5)->create();
-        Job::factory(10)->create();
-        Applicant::factory(5)->create();
-        Application::factory(20)->create();
+
+        Company::factory(10)->create();
+        Job::factory(50)->create();
+        Applicant::factory(10)->create();
+        Application::factory(200)->create();
         Admin::factory(1)->create();
 
         // Company::truncate();
