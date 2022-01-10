@@ -52,8 +52,8 @@
           @foreach ($applications as $application)
             <tr>
               <td>{{ $loop->iteration }}</td>
-              <td>@if(request('search')) {{ $application->company }} @else {{ $application->job->company->name }} @endif</td>
-              <td>@if(request('search')) {{ $application->position }} @else {{ $application->job->position }} @endif</td>
+              <td>{{ $application->job->company->name }}</td>
+              <td>{{ $application->job->position }}</td>
               <td>Rp. {{ number_format($application->salary) }}</td>
               <td><a href="/applicant/applications/{{ $application->id }}">Application Letter</a></td>
               <td>
