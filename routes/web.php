@@ -44,12 +44,17 @@ Route::get('/', function () {
             ->orWhere('companies.city', 'like', '%' . request('search') . '%')
             ->orWhere('jobs.position', 'like', '%' . request('search') . '%');
             // ->get();
+    $jobs = Job::where('position', 'like', '%' . request('search') . '%')
+            ->orWhereHas('company', function($query){
+              $query->where('name', 'like', '%' . request('search') . '%')
+              ->orWhere('city', 'like', '%' . request('search') . '%');
+            })->latest();
   }
 
   // dd($jobs);
   return view('index', [
     'title' => 'Minimize Unemployment',
-    'jobs' => $jobs->paginate(6)
+    'jobs' => $jobs->paginate(10)
   ]);
 });
 
