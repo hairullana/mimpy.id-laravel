@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Applicant;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Job extends Model
 {
@@ -22,6 +23,10 @@ class Job extends Model
 
     public function company(){
         return $this->belongsTo(Company::class);
+    }
+
+    public function education(){
+        return $this->belongsTo(Education::class);
     }
 
 }
