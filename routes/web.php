@@ -3,19 +3,20 @@
 use App\Models\Job;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CVController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\CompanyApplicationController;
-use App\Http\Controllers\ApplicantApplicationController;
+use App\Http\Controllers\CompanyJobController;
 use App\Http\Controllers\JobDashboardController;
 use App\Http\Controllers\CompanyDashboardController;
 use App\Http\Controllers\ApplicantDashboardController;
+use App\Http\Controllers\CompanyApplicationController;
+use App\Http\Controllers\ApplicantApplicationController;
 use App\Http\Controllers\ApplicationDashboardController;
-use App\Http\Controllers\CVController;
-use App\Http\Controllers\SearchController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -52,18 +53,18 @@ Route::get('/', function () {
   ]);
 });
 
-// job
+// company job
 Route::group(['middleware' => 'auth:company'], function() {
-  Route::resource('/jobs', JobController::class, ['except' => ['show']]);
-  Route::get('/jobs/{job:id}/close', [JobController::class, 'close']);
+  Route::resource('/company/jobs', CompanyJobController::class, ['except' => ['show']]);
+  Route::get('/company/jobs/{job:id}/close', [CompanyJobController::class, 'close']);
 });
-Route::get('/jobs/{job:id}', [JobController::class, 'show']);
+Route::get('/company/jobs/{job:id}', [CompanyJobController::class, 'show']);
 
 // company/applications
-Route::resource('company/applications', CompanyApplicationController::class)->middleware('auth:company');
-Route::get('company/applications/{application:id}/accept', [CompanyApplicationController::class, 'acceptPage'])->middleware('auth:company');
-Route::post('company/applications/accept', [CompanyApplicationController::class, 'accept'])->middleware('auth:company');
-Route::get('company/applications/{application:id}/reject', [CompanyApplicationController::class, 'reject'])->middleware('auth:company');
+Route::resource('/company/applications', CompanyApplicationController::class)->middleware('auth:company');
+Route::get('/company/applications/{application:id}/accept', [CompanyApplicationController::class, 'acceptPage'])->middleware('auth:company');
+Route::post('/company/applications/accept', [CompanyApplicationController::class, 'accept'])->middleware('auth:company');
+Route::get('/company/applications/{application:id}/reject', [CompanyApplicationController::class, 'reject'])->middleware('auth:company');
 // applicant/applications
 Route::resource('/applicant/applications', ApplicantApplicationController::class)->middleware('auth:applicant');
 Route::get('/applicant/applications/{application:id}/confirm', [ApplicantApplicationController::class, 'confirm'])->middleware('auth:applicant');
