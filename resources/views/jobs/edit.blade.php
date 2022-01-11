@@ -13,7 +13,7 @@
       <div class="card-body">
   
         {{-- form --}}
-        <form action="/jobs/{{ $job->id }}" method="POST">
+        <form action="/company/jobs/{{ $job->id }}" method="POST">
           @csrf
           @method('put')
           <div class="form-group">

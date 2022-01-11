@@ -57,13 +57,13 @@
           @foreach ($jobs as $job)
             <tr>
               <td>{{ $loop->iteration }}</td>
-              <td>@if(request('search')){{ $job->name }}@else{{ $job->company->name }}@endif</td>
+              <td>{{ $job->company->name }}</td>
               <td>{{ $job->position }}</td>
               <td>{{ $job->education_id }}</td>
               <td>@if($job->status) Active @else Not Active @endif</td>
               <td>
-                <a href="/dashboard/jobs/@if(request('search')){{ $job->idJob }}@else{{ $job->id }}@endif" class="btn btn-outline-primary">Detail</a>
-                <form action="/dashboard/jobs/@if(request('search')){{ $job->idJob }}@else{{ $job->id }}@endif" method="post">
+                <a href="/dashboard/jobs/{{ $job->id }}" class="btn btn-outline-primary">Detail</a>
+                <form action="/dashboard/jobs/{{ $job->id }}" method="post">
                   @csrf
                   @method('delete')
                   <button onclick="return confirm('Are you sure?')" class="btn btn-outline-danger mt-1" type="submit">Delete</button>

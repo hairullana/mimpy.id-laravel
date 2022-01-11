@@ -15,19 +15,17 @@ class JobDashboardController extends Controller
         $jobs = Job::latest();
 
         if(request('search')){
-            $jobs = DB::table('jobs')
-                    ->join('companies', function($join){
-                      $join->on('jobs.company_id', '=', 'companies.id');
-                    })
-                    ->select('jobs.id as idJob', 'jobs.*', 'companies.*')
-                    ->where('companies.name', 'like', '%' . request('search') . '%')
-                    ->orWhere('companies.city', 'like', '%' . request('search') . '%')
-                    ->orWhere('jobs.position', 'like', '%' . request('search') . '%');
+            $jobs = Job::where('position', 'like', '%' . request('search') . '%')
+                    ->orWhereHas('company', function($query){
+                        $query->where('name', 'like', '%' . request('search') . '%')
+                        ->orWhere('city', 'like', '%' . request('search') . '%')
+                        ->orWhere('address', 'like', '%' . request('search') . '%');
+                    })->latest();
         }
 
         return view('dashboard.jobs', [
             'title' => 'Jobs Data',
-            'jobs' => $jobs->paginate(5)
+            'jobs' => $jobs->paginate(10)
         ]);
     }
 

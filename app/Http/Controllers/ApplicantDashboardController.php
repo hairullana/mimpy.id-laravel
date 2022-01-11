@@ -17,12 +17,13 @@ class ApplicantDashboardController extends Controller
             $applicants = Applicant::where('name', 'like', '%' . request('search') . '%')
                             ->orWhere('email', 'like', '%' . request('search') . '%')
                             ->orWhere('address', 'like', '%' . request('search') . '%')
-                            ->orWhere('phone', 'like', '%' . request('search') . '%');
+                            ->orWhere('phone', 'like', '%' . request('search') . '%')
+                            ->latest();
         }
 
         return view('dashboard.applicants', [
             'title' => 'Applicants Data',
-            'applicants' => $applicants->paginate(3)
+            'applicants' => $applicants->paginate(10)
         ]);
     }
 

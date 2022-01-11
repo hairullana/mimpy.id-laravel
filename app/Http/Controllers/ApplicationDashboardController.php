@@ -12,21 +12,19 @@ class ApplicationDashboardController extends Controller
         $applications = Application::latest();
 
         if(request('search')){
-            $applications = Application::join('applicants', function($join){
-                                $join->on('applicants.id', '=', 'applications.applicant_id');
-                            })->join('jobs', function($join){
-                                $join->on('jobs.id', '=', 'applications.job_id');
-                            })->join('companies', function($join){
-                                $join->on('companies.id', '=', 'jobs.company_id');
-                            })->select('applications.id as id', 'applicants.name as applicant', 'jobs.position as position', 'companies.name as company', 'jobs.status as status')
-                            ->where('applicants.name', 'like', '%' . request('search') . '%')
-                            ->orWhere('companies.name', 'like', '%' . request('search') . '%')
-                            ->orWhere('jobs.position', 'like', '%' . request('search') . '%');
+            $applications = Application::whereHas('applicant', function($query){
+                                $query->where('name', 'like', '%' . request('search') . '%');
+                            })->orWhereHas('job', function($query){
+                                $query->where('position', 'like', '%' . request('search') . '%')
+                                ->orWhereHas('company', function($query){
+                                    $query->where('name', 'like', '%' . request('search') . '%');
+                                });
+                            })->latest();
         }
 
         return view('dashboard.applications', [
             'title' => 'Applications Data',
-            'applications' => $applications->paginate(5)
+            'applications' => $applications->paginate(10)
         ]);
     }
 

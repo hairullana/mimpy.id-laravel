@@ -7,7 +7,7 @@
         <h3>Create Job Vacancy</h3>
       </div>
       <div class="card-body">
-        <form action="/jobs" method="POST">
+        <form action="/company/jobs" method="POST">
           @csrf
           <div class="form-group">
             <input type="text" class="form-control @error('position') is-invalid @enderror" placeholder="Position" name="position" required>

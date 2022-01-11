@@ -11,14 +11,18 @@ class CompanyApplicationController extends Controller
 {
     public function index()
     {
-        $applications = Application::join('jobs', function($join){
-            $join->on('applications.job_id', 'jobs.id');
-        })->join('applicants', function($join){
-            $join->on('applications.applicant_id', 'applicants.id');
-        })
-        ->where('jobs.company_id', Auth::guard('company')->user()->id)
-        ->select('applications.id as id', 'applicants.name as applicant', 'jobs.position as position', 'applications.status as status', 'applications.created_at as created_at', 'applicants.cv as cv')
-        ->latest();
+        // $applications = Application::join('jobs', function($join){
+        //     $join->on('applications.job_id', 'jobs.id');
+        // })->join('applicants', function($join){
+        //     $join->on('applications.applicant_id', 'applicants.id');
+        // })
+        // ->where('jobs.company_id', Auth::guard('company')->user()->id)
+        // ->select('applications.id as id', 'applicants.name as applicant', 'jobs.position as position', 'applications.status as status', 'applications.created_at as created_at', 'applicants.cv as cv')
+        // ->latest();
+
+        $applications = Application::whereHas('job', function($query){
+                            $query->where('company_id', Auth::guard('company')->user()->id);
+                        })->latest();
 
         if(request('search')){
             $applications = Application::join('jobs', function($join){
@@ -33,11 +37,17 @@ class CompanyApplicationController extends Controller
                             })
                             ->select('applications.id as id', 'applicants.name as applicant', 'jobs.position as position', 'applications.status as status', 'applications.created_at as created_at', 'applicants.cv as cv')
                             ->latest();
+            // $applications = Application::whereHas('job', function($query){
+            //                     $query->where('company_id', Auth::guard('company')->user()->id)
+            //                     ->where('position', 'like', '%' . request('search') . '%');
+            //                 })->orWhereHas('applicant', function($query){
+            //                     $query->where('name', 'like', '%' . request('search') . '%');
+            //                 })->latest();
         }
 
         return view('company.applications.index', [
             'title' => 'Manage Applications',
-            'applications' => $applications->paginate(5)
+            'applications' => $applications->paginate(10)
         ]);
     }
 

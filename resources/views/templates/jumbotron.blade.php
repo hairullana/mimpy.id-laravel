@@ -19,12 +19,12 @@
               <a href="/profile"><button type="button" class="btn btn-primary btn-block font-weight-bold">My Profile</button></a>
             </div>
             <div class="col-md-3">
-              <a href="/jobs/create"><button type="button" class="btn btn-primary btn-block font-weight-bold">Create Job</button></a>
+              <a href="/company/jobs/create"><button type="button" class="btn btn-primary btn-block font-weight-bold">Create Job</button></a>
             </div>
           </div>
           <div class="row text-center">
             <div class="col-md-3 offset-md-3">
-              <a href="/jobs">
+              <a href="/company/jobs">
                 <button type="button" class="btn btn-primary btn-block font-weight-bold">
                   Manage Jobs
                 </button>

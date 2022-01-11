@@ -21,7 +21,7 @@ class ApplicantApplicationController extends Controller
                                 ->orWhereHas('company', function($query){
                                     $query->where('name', 'like', '%' . request('search') . '%');
                                 });
-                            });
+                            })->latest();
         }
 
         return view('applicant.applications.index', [

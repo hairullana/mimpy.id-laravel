@@ -22,11 +22,11 @@ class CompanyDashboardController extends Controller
                     ->orWhere('city', 'like', '%' . request('search') . '%')
                     ->orWhere('address', 'like', '%' . request('search') . '%')
                     ->orWhere('phone', 'like', '%' . request('search') . '%')
-                    ->orWhere('description', 'like', '%' . request('search') . '%');
+                    ->orWhere('description', 'like', '%' . request('search') . '%')->latest();
         }
         return view('dashboard.companies', [
             'title' => 'Companies Data',
-            'companies' => $companies->paginate(3)
+            'companies' => $companies->paginate(10)
         ]);
     }
 

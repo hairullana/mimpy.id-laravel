@@ -9,34 +9,30 @@ use App\Http\Controllers\Controller;
 use App\Models\Education;
 use Illuminate\Support\Facades\Auth;
 
-class JobController extends Controller
+class CompanyJobController extends Controller
 {
   public function index()
   {
     $jobs = Job::where('company_id', Auth::guard('company')->user()->id)
-            ->join('educations', 'jobs.education_id', '=', 'educations.id')
-            ->select('educations.name as education', 'jobs.created_at as created_at', 'jobs.position as position', 'jobs.id as id')
             ->latest();
 
     if(request('search')){
       $jobs = Job::where('company_id', '=', Auth::guard('company')->user()->id)
-              ->join('educations', 'jobs.education_id', '=', 'educations.id')
-              ->select('educations.name as education', 'jobs.created_at as created_at', 'jobs.position as position', 'jobs.id as id')
               ->where(function($query){
                 $query->where('position', 'like', '%' . request('search') . '%')
                       ->orWhere('education_id', 'like', '%' . request('search') . '%');
               })->latest();
     }
 
-    return view('jobs.index', [
+    return view('company.jobs.index', [
       'title' => 'Jobs Data',
-      'jobs' => $jobs->paginate(5)
+      'jobs' => $jobs->paginate(10)
     ]);
   }
 
   public function create()
   {
-    return view('jobs.create', [
+    return view('company.jobs.create', [
       'title' => 'Create Job Vacancy',
       'educations' => Education::all()
     ]);
@@ -56,12 +52,12 @@ class JobController extends Controller
 
     Job::create($validData);
 
-    return redirect('/jobs')->with('success', 'New job has been published.');
+    return redirect('/company/jobs')->with('success', 'New job has been published.');
   }
 
   public function show($id)
   {
-    return view('jobs.show', [
+    return view('company.jobs.show', [
       'title' => 'Detail Job',
       'job' => Job::find($id),
       'education' => Education::find(Job::find($id)->education_id)->name
@@ -70,7 +66,7 @@ class JobController extends Controller
 
   public function edit($id)
   {
-    return view('jobs.edit', [
+    return view('company.jobs.edit', [
       'title' => 'Edit Job',
       'job' => Job::find($id),
       'educations' => Education::all()
@@ -87,7 +83,7 @@ class JobController extends Controller
     ]);
 
     Job::find($id)->update($validData);
-    return redirect('/jobs')->with('success', 'Job has been updated.');
+    return redirect('/company/jobs')->with('success', 'Job has been updated.');
   }
 
   public function destroy($id)
@@ -95,12 +91,12 @@ class JobController extends Controller
     Job::destroy($id);
     Application::where('job_id', $id)->delete();
 
-    return redirect('/jobs')->with('success', 'Job has been deleted.');
+    return redirect('/company/jobs')->with('success', 'Job has been deleted.');
   }
 
   public function close($id){
     Job::find($id)->update(['status' => 0]);
 
-    return redirect('/jobs')->with('success', 'Job has been closed.');
+    return redirect('/company/jobs')->with('success', 'Job has been closed.');
   }
 }
