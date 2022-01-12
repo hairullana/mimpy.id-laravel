@@ -63,7 +63,7 @@
               <td>{{ $job->education->name }}</td>
               <td>@if($job->status) Active @else Not Active @endif</td>
               <td>
-                <a href="/company/jobs/{{ $job->id }}" class="btn btn-outline-primary">Detail</a>
+                <a href="/jobs/{{ $job->id }}" class="btn btn-outline-primary">Detail</a>
                 <a href="/company/jobs/{{ $job->id }}/edit" class="btn btn-outline-success">Edit</a>
                 <form action="/company/jobs/{{ $job->id }}" method="post" class="d-inline-block">
                   @csrf

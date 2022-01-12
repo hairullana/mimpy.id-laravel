@@ -54,7 +54,7 @@ Route::group(['middleware' => 'auth:company'], function() {
   Route::resource('/company/jobs', CompanyJobController::class, ['except' => ['show']]);
   Route::get('/company/jobs/{job:id}/close', [CompanyJobController::class, 'close']);
 });
-Route::get('/company/jobs/{job:id}', [CompanyJobController::class, 'show']);
+Route::get('/jobs/{job:id}', [CompanyJobController::class, 'show']);
 
 // company/applications
 Route::resource('/company/applications', CompanyApplicationController::class)->middleware('auth:company');
