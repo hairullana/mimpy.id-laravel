@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Education;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class EducationController extends Controller
+class EducationDashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,10 @@ class EducationController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.educations.index', [
+            'title' => 'Manage Educations',
+            'educations' => Education::all()
+        ]);
     }
 
     /**

@@ -26,5 +26,10 @@
         <i class="fas fa-address-book"></i> Applications Data
       </a>
     </li>
+    <li class="nav-item">
+      <a class="nav-link text-white" href="/dashboard/educations">
+        <i class="fas fa-graduation-cap"></i> Educations
+      </a>
+    </li>
   </ul>
 </div>
