@@ -23,9 +23,9 @@
         @csrf
         <div class="form-group">
           <div class="input-group">
-            <input type="text" class="form-control @error('education') is-invalid @enderror" name="education" placeholder="Education Name" required>
+            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Education Name" required>
           </div>
-          @error('education')
+          @error('name')
             <div class="small text-danger ml-2">
               {{ $message }}
             </div>

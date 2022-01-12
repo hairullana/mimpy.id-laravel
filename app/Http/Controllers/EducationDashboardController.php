@@ -42,7 +42,13 @@ class EducationDashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validData = $request->validate([
+            'name' => ['required', 'unique:educations']
+        ]);
+
+        Education::create($validData);
+
+        return redirect('/dashboard/educations')->with('success', 'New educations has been created.');
     }
 
     /**
