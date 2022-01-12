@@ -21,7 +21,8 @@
                   <input type="text" name="position" class="form-control" placeholder="Position" value="{{ request('position') }}">
                 </div>
                 <div class="form-group col-md-4 mb-3">
-                  <select class="form-control" name="education" id="exampleFormControlSelect1">
+                  <select class="form-control" name="education">
+                    <option value="">Select Education</option>
                     @foreach ($educations as $education)
                       <option value="{{ $education->id }}" @if(request('education') == $education->id) selected @endif>{{ $education->name }}</option>
                     @endforeach

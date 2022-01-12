@@ -54,7 +54,7 @@ class SearchController extends Controller
 
         return view('search.index', [
             'title' => 'Find Spesific Job',
-            'jobs' => $jobs->paginate(5),
+            'jobs' => $jobs->paginate(10),
             'educations' => Education::all()
         ]);
     }
