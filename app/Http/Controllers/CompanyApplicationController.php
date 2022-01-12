@@ -5,44 +5,27 @@ namespace App\Http\Controllers;
 use App\Models\Application;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Applicant;
 use Illuminate\Support\Facades\Auth;
 
 class CompanyApplicationController extends Controller
 {
     public function index()
     {
-        // $applications = Application::join('jobs', function($join){
-        //     $join->on('applications.job_id', 'jobs.id');
-        // })->join('applicants', function($join){
-        //     $join->on('applications.applicant_id', 'applicants.id');
-        // })
-        // ->where('jobs.company_id', Auth::guard('company')->user()->id)
-        // ->select('applications.id as id', 'applicants.name as applicant', 'jobs.position as position', 'applications.status as status', 'applications.created_at as created_at', 'applicants.cv as cv')
-        // ->latest();
-
         $applications = Application::whereHas('job', function($query){
                             $query->where('company_id', Auth::guard('company')->user()->id);
                         })->latest();
 
         if(request('search')){
-            $applications = Application::join('jobs', function($join){
-                                $join->on('applications.job_id', 'jobs.id');
-                            })->join('applicants', function($join){
-                                $join->on('applications.applicant_id', 'applicants.id');
-                            })
-                            ->where('jobs.company_id', Auth::guard('company')->user()->id)
-                            ->where(function($query){
-                                $query->where('applicants.name', 'like', '%' . request('search') . '%')
-                                    ->orWhere('jobs.position', 'like', '%' . request('search') . '%');
-                            })
-                            ->select('applications.id as id', 'applicants.name as applicant', 'jobs.position as position', 'applications.status as status', 'applications.created_at as created_at', 'applicants.cv as cv')
-                            ->latest();
-            // $applications = Application::whereHas('job', function($query){
-            //                     $query->where('company_id', Auth::guard('company')->user()->id)
-            //                     ->where('position', 'like', '%' . request('search') . '%');
-            //                 })->orWhereHas('applicant', function($query){
-            //                     $query->where('name', 'like', '%' . request('search') . '%');
-            //                 })->latest();
+            $applications = Application::whereHas('job', function($query) {
+                                $query->where('company_id', Auth::guard('company')->user()->id);
+                            })->where(function($query){
+                                $query->whereHas('job', function($query) {
+                                    $query->where('position', 'like', '%' . request('search') . '%');
+                                })->orWhereHas('applicant', function($query){
+                                    $query->where('name', 'like', '%' . request('search') . '%');
+                                });
+                            })->latest();
         }
 
         return view('company.applications.index', [

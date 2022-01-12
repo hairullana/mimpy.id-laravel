@@ -54,11 +54,11 @@
           @foreach ($applications as $application)
             <tr>
               <td>{{ $loop->iteration }}</td>
-              <td>{{ $application->applicant }}</td>
-              <td>{{ $application->position }}</td>
+              <td>{{ $application->applicant->name }}</td>
+              <td>{{ $application->job->position }}</td>
               <td>
                 @if ($application->cv)
-                  <a href="/storage/{{ $application->cv }}" class="btn btn-outline-primary">CV</a> 
+                  <a href="/storage/{{ $application->applicant->cv }}" class="btn btn-outline-primary">CV</a> 
                 @else
                   <button disabled class="btn btn-outline-secondary">No CV</button> 
                 @endif
