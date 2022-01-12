@@ -28,7 +28,10 @@ class EducationDashboardController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.educations.create', [
+            'title' => 'Create New Education',
+            'education' => Education::get()->last()
+        ]);
     }
 
     /**
