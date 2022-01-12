@@ -52,7 +52,7 @@
               <td>{{ $education->id }}</td>
               <td>{{ $education->name }}</td>
               <td>
-                <a href="/dashboard/educations/{{ $education->id }}" class="btn btn-outline-primary">Edit</a>
+                <a href="/dashboard/educations/{{ $education->id }}/edit" class="btn btn-outline-primary">Edit</a>
                 <form action="/dashboard/educations/{{ $education->id }}" method="post" class="d-inline">
                   @csrf
                   @method('delete')
