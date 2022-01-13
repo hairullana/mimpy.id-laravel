@@ -104,6 +104,8 @@ class CompanyApplicationController extends Controller
     }
 
     public function acceptPage($id){
+        $this->authorize('acceptReject', Application::find($id));
+
         return view('company.applications.accept', [
             'title' => 'Accept Applicant',
             'application' => Application::find($id)
@@ -120,6 +122,8 @@ class CompanyApplicationController extends Controller
     }
 
     public function reject($id){
+        $this->authorize('acceptReject', Application::find($id));
+        
         Application::find($id)->update(['status' => 0]);
 
         return redirect('/company/applications')->with('success', 'Application has been rejected.');
