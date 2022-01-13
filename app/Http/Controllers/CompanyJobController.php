@@ -66,6 +66,8 @@ class CompanyJobController extends Controller
 
   public function edit($id)
   {
+    $this->authorize('edit', Job::find($id));
+
     return view('company.jobs.edit', [
       'title' => 'Edit Job',
       'job' => Job::find($id),
@@ -95,6 +97,7 @@ class CompanyJobController extends Controller
   }
 
   public function close($id){
+    $this->authorize('close', Job::find($id));
     Job::find($id)->update(['status' => 0]);
 
     return redirect('/company/jobs')->with('success', 'Job has been closed.');
