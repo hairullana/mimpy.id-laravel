@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Company;
+use App\Models\Applicant;
 use App\Models\Application;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -20,7 +21,12 @@ class ApplicationPolicy
         //
     }
 
-    public function acceptReject(Company $company, Application $application){
+    
+    public function companyAcceptReject(Company $company, Application $application){
         return $company->id == $application->job->company_id;
+    }
+    
+    public function applicantConfirm(Applicant $applicant, Application $application){
+        return $applicant->id == $application->applicant_id;
     }
 }

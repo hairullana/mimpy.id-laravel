@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Job;
 use App\Models\Application;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
+// use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 
 class ApplicantApplicationController extends Controller
 {
@@ -79,6 +80,8 @@ class ApplicantApplicationController extends Controller
     }
 
     public function confirm($id){
+        $this->authorize('applicantConfirm', Application::find($id));
+
         Application::find($id)->update(['confirm' => 1]);
 
         return redirect('/applicant/applications')->with('success', 'Application has been confirmation.');

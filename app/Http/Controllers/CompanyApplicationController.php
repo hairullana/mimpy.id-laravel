@@ -122,8 +122,8 @@ class CompanyApplicationController extends Controller
     }
 
     public function reject($id){
-        $this->authorize('acceptReject', Application::find($id));
-        
+        $this->authorize('companyAcceptReject', Application::find($id));
+
         Application::find($id)->update(['status' => 0]);
 
         return redirect('/company/applications')->with('success', 'Application has been rejected.');
