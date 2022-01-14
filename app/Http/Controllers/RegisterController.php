@@ -39,7 +39,7 @@ class RegisterController extends Controller
         ]);
 
         $validData['password'] = Hash::make($validData['password']);
-        $validData['photo'] = 'default.jpg';
+        $validData['photo'] = 'images/company/default.jpg';
 
         Company::create($validData);
 
@@ -58,7 +58,7 @@ class RegisterController extends Controller
         ]);
 
         $validData['password'] = Hash::make($validData['password']);
-        $validData['photo'] = 'default.jpg';
+        $validData['photo'] = 'images/applicant/default.jpg';
         $validData['cv'] = '';
 
 
