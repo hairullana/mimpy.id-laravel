@@ -33,13 +33,17 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 // index
 Route::get('/', function () {
-  $jobs = Job::latest();
+  $jobs = Job::where('status', 1)
+          ->latest();
 
   if(request('search')){
-    $jobs = Job::where('position', 'like', '%' . request('search') . '%')
-            ->orWhereHas('company', function($query){
-              $query->where('name', 'like', '%' . request('search') . '%')
-              ->orWhere('city', 'like', '%' . request('search') . '%');
+    $jobs = Job::where('status', 1)
+            ->where(function($query){
+              $query->where('position', 'like', '%' . request('search') . '%')
+              ->orWhereHas('company', function($query){
+                $query->where('name', 'like', '%' . request('search') . '%')
+                ->orWhere('city', 'like', '%' . request('search') . '%');
+              });
             })->latest();
   }
 
