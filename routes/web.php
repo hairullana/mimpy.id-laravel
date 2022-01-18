@@ -32,7 +32,14 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 // index
-Route::get('/', function () {
+
+Route::get('/', function(){
+  return view('index', [
+    'jobs' => Job::all()->take(3)
+  ]);
+});
+
+Route::get('/home', function () {
   $jobs = Job::where('status', 1)
           ->latest();
 
@@ -48,7 +55,7 @@ Route::get('/', function () {
   }
 
   // dd($jobs);
-  return view('index', [
+  return view('home', [
     'title' => 'Minimize Unemployment',
     'jobs' => $jobs->paginate(10)
   ]);
@@ -108,3 +115,4 @@ Route::post('/cv', [CVController::class, 'update'])->middleware('auth:applicant'
 
 // search
 Route::get('/search', [SearchController::class, 'index'])->middleware('auth:applicant');
+
