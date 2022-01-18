@@ -2,7 +2,8 @@
 
 Same as [`Mimpy.ID - https://github.com/hairullana/mimpy.id`](https://github.com/hairullana/mimpy.id) but use Laravel v8
 
-Still in coding!
+Overall done, but I want to improve the frontend (but I'm weak here).
+Besides that I want to add some new features in the future.
 
 ---------
 
