@@ -3160,8 +3160,11 @@ p.form-message.success, p.form-message.error {
 /*===== FOOTER FIVE =====*/
 .footer-area {
   background-color: #f4f6f7;
-  padding-top: 90px;
-  padding-bottom: 120px; }
+  padding-top: 30px;
+  padding-bottom: 30px; }
+  .footer-area .link a{
+    color: white;
+  }
   .footer-area .social li {
     display: inline-block;
     margin: 0 5px; }

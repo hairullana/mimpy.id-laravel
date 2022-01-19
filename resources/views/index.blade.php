@@ -60,7 +60,6 @@
                 <li class="nav-item"><a class="page-scroll" href="#services">Services</a></li>
                 <li class="nav-item"><a class="page-scroll" href="#job">Job</a></li>
                 <li class="nav-item"><a class="page-scroll" href="#about">About</a></li>
-                <li class="nav-item"><a class="page-scroll" href="#contact">Contact</a></li>
               </ul>
             </div>
             
@@ -320,195 +319,48 @@
         </div>
         <div class="col-lg-7">
           <div class="about-image mt-50">
-            <img src="/images/landing-page/about.jpg" alt="about">
+            <img src="/storage/images/company/default.jpg" alt="about">
           </div>
         </div>
       </div>
     </div>
   </section>
 
-    <!--====== ABOUT PART ENDS ======-->
-    
-    <!--====== CONTACT PART START ======-->
-
-    <section id="contact" class="contact-area">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6 col-md-10">
-                    <div class="section-title text-center pb-30">
-                        <h3 class="title">Contact</h3>
-                        <p class="text">Lorem ipsum dolor sit amet.</p>
-                    </div> <!-- section title -->
-                </div>
-            </div> <!-- row -->
-            <div class="contact-info pt-30">
-                <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-contact-info contact-color-1 mt-30 d-flex ">
-                            <div class="contact-info-icon">
-                                <i class="lni lni-map-marker"></i>
-                            </div>
-                            <div class="contact-info-content media-body">
-                                <p class="text"> Karangasem, Bali</p>
-                            </div>
-                        </div> <!-- single contact info -->
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-contact-info contact-color-2 mt-30 d-flex ">
-                            <div class="contact-info-icon">
-                                <i class="lni lni-envelope"></i>
-                            </div>
-                            <div class="contact-info-content media-body">
-                                <p class="text">hairullana@outlook.com</p>
-                            </div>
-                        </div> <!-- single contact info -->
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="single-contact-info contact-color-3 mt-30 d-flex ">
-                            <div class="contact-info-icon">
-                                <i class="lni lni-phone"></i>
-                            </div>
-                            <div class="contact-info-content media-body">
-                                <p class="text">+62 xxx xxxx xxxx</p>
-                            </div>
-                        </div> <!-- single contact info -->
-                    </div>
-                </div> <!-- row -->
-            </div> <!-- contact info -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="contact-wrapper form-style-two pt-115">
-                        <h4 class="contact-title pb-10"><i class="lni lni-envelope"></i> Leave <span>A Message.</span></h4>
-                        
-                        <form id="contact-form" action="/contact.php" method="post">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-input mt-25">
-                                        <label>Name</label>
-                                        <div class="input-items default">
-                                            <input name="name" type="text" placeholder="Name">
-                                            <i class="lni lni-user"></i>
-                                        </div>
-                                    </div> <!-- form input -->
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-input mt-25">
-                                        <label>Email</label>
-                                        <div class="input-items default">
-                                            <input type="email" name="email" placeholder="Email">
-                                            <i class="lni lni-envelope"></i>
-                                        </div>
-                                    </div> <!-- form input -->
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-input mt-25">
-                                        <label>Massage</label>
-                                        <div class="input-items default">
-                                            <textarea name="massage" placeholder="Massage"></textarea>
-                                            <i class="lni lni-pencil-alt"></i>
-                                        </div>
-                                    </div> <!-- form input -->
-                                </div>
-                                <p class="form-message"></p>
-                                <div class="col-md-12">
-                                    <div class="form-input light-rounded-buttons mt-30">
-                                        <button class="main-btn light-rounded-two">Send Message</button>
-                                    </div> <!-- form input -->
-                                </div>
-                            </div> <!-- row -->
-                        </form>
-                    </div> <!-- contact wrapper form -->
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
-
-    <!--====== CONTACT PART ENDS ======-->
-    
-    <!--====== FOOTER PART START ======-->
-
-    <section class="footer-area footer-dark">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-6">
-                    <div class="footer-logo text-center">
-                        <a class="mt-30" href="index.html"><img src="/images/landing-page/logo.svg" alt="Logo"></a>
-                    </div> <!-- footer logo -->
-                    <ul class="social text-center mt-60">
-                        <li><a href="https://facebook.com/uideckHQ"><i class="lni lni-facebook-filled"></i></a></li>
-                        <li><a href="https://twitter.com/uideckHQ"><i class="lni lni-twitter-original"></i></a></li>
-                        <li><a href="https://instagram.com/uideckHQ"><i class="lni lni-instagram-original"></i></a></li>
-                        <li><a href="#"><i class="lni lni-linkedin-original"></i></a></li>
-                    </ul> <!-- social -->
-                    <div class="footer-support text-center">
-                        <span class="number">+8801234567890</span>
-                        <span class="mail">support@uideck.com</span>
-                    </div>
-                    <div class="copyright text-center mt-35">
-                        <p class="text">Designed by <a href="https://uideck.com" rel="nofollow">UIdeck</a> and Built-with <a rel="nofollow" href="https://ayroui.com">Ayro UI</a> </p>
-                    </div> <!--  copyright -->
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-    </section>
-
-    <!--====== FOOTER PART ENDS ======-->
-    
-    <!--====== BACK TOP TOP PART START ======-->
-
-    <a href="#" class="back-to-top"><i class="lni lni-chevron-up"></i></a>
-
-    <!--====== BACK TOP TOP PART ENDS ======-->    
-
-    <!--====== PART START ======-->
-
-<!--
-    <section class="">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-">
-                    
-                </div>
-            </div>
+  {{-- footer --}}
+  <section class="footer-area footer-dark">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-6">
+          <ul class="social text-center">
+            <li><a href="https://github.com/hairullana"><i class="lni lni-github-original"></i></a></li>
+            <li><a href="https://lindkedin.com/in/hairullana"><i class="lni lni-linkedin-original"></i></a></li>
+            <li><a href="https://facebook.com/hairullana99"><i class="lni lni-facebook-filled"></i></a></li>
+            <li><a href="https://instagram.com/hairullana_"><i class="lni lni-instagram-original"></i></a></li>
+            <li><a href="https://hairullana.github.io"><i class="lni lni-world"></i></a></li>
+          </ul>
+          <div class="link text-center mt-3">
+            <a href="/">Mimpy.ID - Minimize Unemployment</a>
+          </div>
         </div>
-    </section>
--->
+      </div>
+    </div>
+  </section>
+  
+  {{-- back to top --}}
+  <a href="#" class="back-to-top"><i class="lni lni-chevron-up"></i></a>
 
-    <!--====== PART ENDS ======-->
-
-
-
-
-    <!--====== Jquery js ======-->
-    <script src="/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="/js/vendor/modernizr-3.7.1.min.js"></script>
-    
-    <!--====== Bootstrap js ======-->
-    <script src="/js/popper.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    
-    <!--====== Slick js ======-->
-    <script src="/js/slick.min.js"></script>
-    
-    <!--====== Magnific Popup js ======-->
-    <script src="/js/jquery.magnific-popup.min.js"></script>
-    
-    <!--====== Ajax Contact js ======-->
-    <script src="/js/ajax-contact.js"></script>
-    
-    <!--====== Isotope js ======-->
-    <script src="/js/images/landing-pageloaded.pkgd.min.js"></script>
-    <script src="/js/isotope.pkgd.min.js"></script>
-    
-    <!--====== Scrolling Nav js ======-->
-    <script src="/js/jquery.easing.min.js"></script>
-    <script src="/js/scrolling-nav.js"></script>
-    
-    <!--====== Main js ======-->
-    <script src="/js/main.js"></script>
-    
+  <script src="/js/vendor/jquery-1.12.4.min.js"></script>
+  <script src="/js/vendor/modernizr-3.7.1.min.js"></script>
+  <script src="/js/popper.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/slick.min.js"></script>
+  <script src="/js/jquery.magnific-popup.min.js"></script>
+  <script src="/js/ajax-contact.js"></script>
+  <script src="/js/images/landing-pageloaded.pkgd.min.js"></script>
+  <script src="/js/isotope.pkgd.min.js"></script>
+  <script src="/js/jquery.easing.min.js"></script>
+  <script src="/js/scrolling-nav.js"></script>
+  <script src="/js/main.js"></script>
 </body>
 
 </html>
-
-
