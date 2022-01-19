@@ -339,7 +339,7 @@
             <li><a href="https://hairullana.github.io"><i class="lni lni-world"></i></a></li>
           </ul>
           <div class="link text-center mt-3">
-            <a href="/">Mimpy.ID - Minimize Unemployment</a>
+            <a href="/">Mimpy.ID - Minimize Unemployment</a> &copy; Copyright <?= date('Y') ?>
           </div>
         </div>
       </div>

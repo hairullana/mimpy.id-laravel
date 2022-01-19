@@ -28,12 +28,12 @@ class LoginController extends Controller
         if ($request->role == 'applicant') {
           if(Auth::guard('applicant')->attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            return redirect()->intended('/home');
           }
         } else if ($request->role == 'company') {
           if(Auth::guard('company')->attempt($credentials)){
             $request->session()->regenerate();
-            return redirect()->intended('/');
+            return redirect()->intended('/home');
           }
         } else if ($request->role == 'admin') {
           if(Auth::guard('admin')->attempt($credentials)){

@@ -23,7 +23,7 @@
         
     </div>
     <div class="card-footer bg-primary text-white text-center">
-    <a href="/" class="link-footer">Mimpy.ID</a> &copy; Copyright <?= date('Y') ?>
+    <a href="/home" class="link-footer">Mimpy.ID - Minimize Unempoyment</a> &copy; Copyright <?= date('Y') ?>
     </div>
 </div>
 <!-- end footer -->
