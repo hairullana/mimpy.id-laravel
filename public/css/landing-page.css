@@ -2241,9 +2241,6 @@ p {
         -o-transition: all 0.3s ease-out 0s;
         transition: all 0.3s ease-out 0s; }
         @media only screen and (min-width: 768px) and (max-width: 991px) {
-          .navbar-area .navbar-brand {
-            color: black;
-          }
           .navbar-area .navbar .navbar-nav .nav-item a {
             padding: 10px 0;
             display: block;
@@ -2285,10 +2282,10 @@ p {
         color: #fff; }
         @media only screen and (min-width: 768px) and (max-width: 991px) {
           .navbar-area .navbar .navbar-nav .nav-item.active > a, .navbar-area .navbar .navbar-nav .nav-item:hover > a {
-            color: #121212; } }
+            color: white; } }
         @media (max-width: 767px) {
           .navbar-area .navbar .navbar-nav .nav-item.active > a, .navbar-area .navbar .navbar-nav .nav-item:hover > a {
-            color: #121212; } }
+            color: white; } }
         .navbar-area .navbar .navbar-nav .nav-item.active > a::before, .navbar-area .navbar .navbar-nav .nav-item:hover > a::before {
           -webkit-transform: translate(-50%) scaleX(1);
           -moz-transform: translate(-50%) scaleX(1);
@@ -3248,7 +3245,3 @@ p.form-message.success, p.form-message.error {
     background-color: #0067f4; }
 
 /*# sourceMappingURL=style.css.map */
-
-.navbar-brand{
-  color: white;
-}
