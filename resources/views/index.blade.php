@@ -8,7 +8,7 @@
   
   <title>Mimpy.ID</title>
 
-  <link rel="shortcut icon" href="/images/landing-page/favicon.png" type="image/png">
+  <link rel="shortcut icon" href="/assets/favicon.ico" type="image/png">
 
   <link rel="stylesheet" href="/css/magnific-popup.css">
   <link rel="stylesheet" href="/css/slick.css">
