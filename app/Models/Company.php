@@ -13,4 +13,8 @@ class Company extends Authenticable
 
     protected $guard = 'company';
     protected $guarded = ['id'];
+
+    public function job(){
+        return $this->hasMany(Job::class);
+    }
 }
