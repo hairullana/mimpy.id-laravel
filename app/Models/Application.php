@@ -22,7 +22,14 @@ class Application extends Model
         return $this->belongsTo(Job::class);
     }
 
-    // public function company(){
-    //     return $this->belongsToMany(Company::class, Job::class);
-    // }
+    public function scopeFilter($query, array $filters){
+        if(isset($filters['search']) ? $filters['search'] : false){
+            return $query->whereHas('job', function($query){
+                            $query->where('position', 'like', '%' . request('search') . '%')
+                            ->orWhereHas('company', function($query){
+                                $query->where('name', 'like', '%' . request('search') . '%');
+                            });
+                        })->latest();
+        }
+    }
 }
