@@ -16,91 +16,18 @@ class CompanyApplicationController extends Controller
                             $query->where('company_id', Auth::guard('company')->user()->id);
                         })->latest();
 
-        if(request('search')){
-            $applications = Application::whereHas('job', function($query) {
-                                $query->where('company_id', Auth::guard('company')->user()->id);
-                            })->where(function($query){
-                                $query->whereHas('job', function($query) {
-                                    $query->where('position', 'like', '%' . request('search') . '%');
-                                })->orWhereHas('applicant', function($query){
-                                    $query->where('name', 'like', '%' . request('search') . '%');
-                                });
-                            })->latest();
-        }
-
         return view('company.applications.index', [
             'title' => 'Manage Applications',
-            'applications' => $applications->paginate(10)
+            'applications' => $applications->filterCompanyAuth(request(['search']))->paginate(10)
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         return view('company.applications.letter', [
             'title' => 'Application Letter',
             'application' => Application::find($id)
         ]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 
     public function acceptPage($id){

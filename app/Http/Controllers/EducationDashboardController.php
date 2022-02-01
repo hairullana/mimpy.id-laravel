@@ -8,11 +8,6 @@ use App\Http\Controllers\Controller;
 
 class EducationDashboardController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('dashboard.educations.index', [
@@ -21,11 +16,6 @@ class EducationDashboardController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('dashboard.educations.create', [
@@ -34,12 +24,6 @@ class EducationDashboardController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $validData = $request->validate([
@@ -51,23 +35,11 @@ class EducationDashboardController extends Controller
         return redirect('/dashboard/educations')->with('success', 'New educations has been created.');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Education  $education
-     * @return \Illuminate\Http\Response
-     */
     public function show(Education $education)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Education  $education
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Education $education)
     {
         return view('dashboard.educations.edit', [
@@ -76,13 +48,6 @@ class EducationDashboardController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Education  $education
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Education $education)
     {
         $validData = $request->validate([
@@ -94,12 +59,6 @@ class EducationDashboardController extends Controller
         return redirect('/dashboard/educations')->with('success', 'Educations has been updated.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Education  $education
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Education $education)
     {
         //

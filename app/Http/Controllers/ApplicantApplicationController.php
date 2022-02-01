@@ -10,25 +10,23 @@ use App\Http\Controllers\Controller;
 
 class ApplicantApplicationController extends Controller
 {
-  public function index()
-  {
+  public function index(){
     $applications = Application::where('applicant_id', '=', Auth::guard('applicant')->user()->id)->latest();
 
     return view('applicant.applications.index', [
       'title' => 'Manage Application',
-      'applications' => $applications->filter(request(['search']))->paginate(10)
+      'applications' => $applications->filterApplicantAuth(request(['search']))->paginate(10)
     ]);
   }
-  public function create($id)
-  {
+
+  public function create($id){
     return view('applicant.applications.create', [
       'title' => 'Create Application',
       'job' => Job::find($id)
     ]);
   }
 
-  public function store(Request $request)
-  {
+  public function store(Request $request){
     $validData = $request->validate([
       'job_id' => ['required'],
       'salary' => ['required', 'numeric'],
@@ -45,8 +43,7 @@ class ApplicantApplicationController extends Controller
     return redirect('/applicant/applications')->with('success', 'Application has been created.');
   }
 
-  public function show($id)
-  {
+  public function show($id){
     return view('applicant.applications.companyLetter', [
       'title' => 'Company Letter',
       'letter' => Application::find($id)

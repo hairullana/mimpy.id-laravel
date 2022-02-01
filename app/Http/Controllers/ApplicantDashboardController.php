@@ -9,93 +9,24 @@ use Illuminate\Routing\Controller;
 
 class ApplicantDashboardController extends Controller
 {
-    public function index()
-    {
-        $applicants = Applicant::latest();
+  public function index(){
+    return view('dashboard.applicants', [
+      'title' => 'Applicants Data',
+      'applicants' => Applicant::latest()->filterAdminAuth(request(['search']), 'admin')->paginate(10)
+    ]);
+  }
 
-        if(request('search')){
-            $applicants = Applicant::where('name', 'like', '%' . request('search') . '%')
-                            ->orWhere('email', 'like', '%' . request('search') . '%')
-                            ->orWhere('address', 'like', '%' . request('search') . '%')
-                            ->orWhere('phone', 'like', '%' . request('search') . '%')
-                            ->latest();
-        }
+  public function show($id){
+    return view('dashboard.applicant', [
+      'title' => 'Applicant Detail',
+      'applicant' => Applicant::find($id)
+    ]);
+  }
 
-        return view('dashboard.applicants', [
-            'title' => 'Applicants Data',
-            'applicants' => $applicants->paginate(10)
-        ]);
-    }
+  public function destroy($id){
+    Applicant::destroy($id);
+    Application::where('applicant_id', $id)->delete();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        return view('dashboard.applicant', [
-            'title' => 'Applicant Detail',
-            'applicant' => Applicant::find($id)
-        ]);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        Applicant::destroy($id);
-        Application::where('applicant_id', $id)->delete();
-
-        return redirect('/dashboard/applicants')->with('success', 'Applicant has been deleted.');
-    }
+    return redirect('/dashboard/applicants')->with('success', 'Applicant has been deleted.');
+  }
 }

@@ -16,17 +16,9 @@ class CompanyJobController extends Controller
     $jobs = Job::where('company_id', Auth::guard('company')->user()->id)
             ->latest();
 
-    if(request('search')){
-      $jobs = Job::where('company_id', '=', Auth::guard('company')->user()->id)
-              ->where(function($query){
-                $query->where('position', 'like', '%' . request('search') . '%')
-                      ->orWhere('education_id', 'like', '%' . request('search') . '%');
-              })->latest();
-    }
-
     return view('company.jobs.index', [
       'title' => 'Jobs Data',
-      'jobs' => $jobs->paginate(10)
+      'jobs' => $jobs->filterCompanyAuth(request(['search']))->paginate(10)
     ]);
   }
 
