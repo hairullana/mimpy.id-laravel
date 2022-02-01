@@ -9,7 +9,8 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
+        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav">
           @if(Auth::guard('admin')->check())
             <li class="nav-item"><a class="nav-link active" href="/profile">Admin</a></li>
             <form action="/logout" method="post">
