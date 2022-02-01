@@ -14,9 +14,22 @@ Besides that I want to add some new features in the future.
 git clone https://github.com/hairullana/mimpy.id-laravel
 ```
 
-### 2. Create database "mimpy-id-laravel"
+### 2. Change directory
+```bash
+cd gabut-chat
+```
 
-### 3. Migrate database
+### 3. Create and `Setup` .env file (DB)
+```bash
+cp .env.example .env
+```
+
+### 4. Generate key
+```bash
+php artisan key:generate
+```
+
+### 5. Migrate database
 ```bash
 php artisan migrate:fresh --seed
 ```
