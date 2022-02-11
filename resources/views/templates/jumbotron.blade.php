@@ -93,7 +93,7 @@
         </div>
       @else
         <div class="col text-center">
-            <a href="registrasi.php" type="button" class="btn btn-primary align-content-center">Daftar Sekarang</a>
+            <a href="/register" type="button" class="btn btn-primary align-content-center">Daftar Sekarang</a>
         </div>
       @endif
 
