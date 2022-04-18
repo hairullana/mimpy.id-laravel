@@ -24,5 +24,6 @@
       {{-- Trix --}}
       <link rel="stylesheet" href="/css/trix.css">
       <script src="/js/trix.js"></script>
+      @livewireStyles
   </head>
   <body>
