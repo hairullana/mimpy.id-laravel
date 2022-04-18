@@ -33,24 +33,7 @@
     @endif
 
     
-    <livewire:education-create></livewire:education-create>
-    {{-- <a href="/dashboard/educations/create" class="btn btn-primary">Create New Education</a> --}}
-
-    {{-- educations data table --}}
-    <div class="table-responsive">
-      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Education Name</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <livewire:educations></livewire:educations>
-        </tbody>
-      </table>
-    </div>
+    <livewire:educations></livewire:educations>
 
   </div>
 </div>
