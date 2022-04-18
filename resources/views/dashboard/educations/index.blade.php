@@ -32,9 +32,9 @@
       </div>
     @endif
 
-    <div class="my-3">
-      <a href="/dashboard/educations/create" class="btn btn-primary">Create New Education</a>
-    </div>
+    
+    <livewire:education-create></livewire:education-create>
+    {{-- <a href="/dashboard/educations/create" class="btn btn-primary">Create New Education</a> --}}
 
     {{-- educations data table --}}
     <div class="table-responsive">
