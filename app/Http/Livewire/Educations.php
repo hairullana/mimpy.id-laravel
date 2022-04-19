@@ -11,7 +11,8 @@ class Educations extends Component
     public $statusUpdate = false;
     
     protected $listeners = [
-        'educationStored' => 'handleStored'
+        'educationStored' => 'handleStored',
+        'educationUpdated' => 'handleUpdated'
     ];
     
     public function render()
@@ -29,5 +30,9 @@ class Educations extends Component
 
     public function handleStored($education){
         session()->flash('message', 'New education has been added!');
+    }
+
+    public function handleUpdated($education){
+        session()->flash('message', 'Education has been updated!');
     }
 }
