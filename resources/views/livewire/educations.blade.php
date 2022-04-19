@@ -10,7 +10,11 @@
   </div>
   @endif
 
-  <livewire:education-create></livewire:education-create>
+  @if ($statusUpdate)
+    <livewire:education-update></livewire:education-update>
+  @else
+    <livewire:education-create></livewire:education-create>
+  @endif
   
   {{-- <a href="/dashboard/educations/create" class="btn btn-primary">Create New Education</a> --}}
   
@@ -31,7 +35,8 @@
               <td>{{ $education->id }}</td>
               <td>{{ $education->name }}</td>
               <td>
-                <a href="/dashboard/educations/{{ $education->id }}/edit" class="btn btn-outline-primary">Edit</a>
+                <button wire:click="getEducation({{ $education->id }})" class="btn btn-outline-primary">Edit</button>
+                {{-- <a href="/dashboard/educations/{{ $education->id }}/edit" class="btn btn-outline-primary">Edit</a> --}}
                 <form action="/dashboard/educations/{{ $education->id }}" method="post" class="d-inline">
                   @csrf
                   @method('delete')

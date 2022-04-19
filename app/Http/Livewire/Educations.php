@@ -8,6 +8,7 @@ use Livewire\Component;
 class Educations extends Component
 {
     public $name;
+    public $statusUpdate = false;
     
     protected $listeners = [
         'educationStored' => 'handleStored'
@@ -18,6 +19,12 @@ class Educations extends Component
         return view('livewire.educations', [
             'educations' => Education::orderBy('id', 'DESC')->get()
         ]);
+    }
+
+    public function getEducation($id){
+        $this->statusUpdate = true;
+        $education = Education::find($id);
+        $this->emit('getEducation', $education);
     }
 
     public function handleStored($education){
