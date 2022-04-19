@@ -21,6 +21,6 @@ class Educations extends Component
     }
 
     public function handleStored($education){
-        // dd($education);
+        session()->flash('message', 'New education has been added!');
     }
 }

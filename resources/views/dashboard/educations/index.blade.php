@@ -12,7 +12,7 @@
   <div class="card-body">
 
     {{-- alert --}}
-    @if (session()->has('success'))
+    {{-- @if (session()->has('success'))
       <div class="text-center">
         <div class="alert alert-success alert-dismissible fade show" role="alert">
           {{ session('success') }}
@@ -30,7 +30,7 @@
           </button>
         </div>
       </div>
-    @endif
+    @endif --}}
 
     
     <livewire:educations></livewire:educations>
