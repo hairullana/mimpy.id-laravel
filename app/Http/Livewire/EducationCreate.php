@@ -15,6 +15,10 @@ class EducationCreate extends Component
     }
 
     public function store(){
+        $this->validate([
+            'name' => ['min:5', 'max:30']
+        ]);
+        
         $education = Education::create([
             'name' => $this->name
         ]);

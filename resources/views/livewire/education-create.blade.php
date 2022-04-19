@@ -2,14 +2,12 @@
   <div class="card-body">
   
     <form wire:submit.prevent="store">
-      {{-- @csrf --}}
+      @error('name')
+        <div class="small text-danger ml-2 mb-2">
+          {{ $message }}
+        </div>
+      @enderror
       <div class="form-group row">
-
-        @error('name')
-          <div class="small text-danger ml-2">
-            {{ $message }}
-          </div>
-        @enderror
         <div class="col-md-6 col-sm-6">
           <div class="input-group">
             <input wire:model="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" placeholder="Education Name" required>

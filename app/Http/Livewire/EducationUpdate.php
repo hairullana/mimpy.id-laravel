@@ -25,6 +25,10 @@ class EducationUpdate extends Component
     }
 
     public function update(){
+        $this->validate([
+            'name' => ['min:5', 'max:30']
+        ]);
+
         if ($this->educationId){
             $education = Education::find($this->educationId);
             $education->update([
