@@ -28,6 +28,14 @@ class Educations extends Component
         $this->emit('getEducation', $education);
     }
 
+    public function destroy($id){
+        if($id){
+            $data = Education::find($id);
+            $data->delete();
+            session()->flash('message', 'education has been deleted!');
+        }
+    }
+
     public function handleStored($education){
         session()->flash('message', 'New education has been added!');
     }

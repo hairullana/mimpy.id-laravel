@@ -36,12 +36,11 @@
               <td>{{ $education->name }}</td>
               <td>
                 <button wire:click="getEducation({{ $education->id }})" class="btn btn-outline-primary">Edit</button>
-                {{-- <a href="/dashboard/educations/{{ $education->id }}/edit" class="btn btn-outline-primary">Edit</a> --}}
-                <form action="/dashboard/educations/{{ $education->id }}" method="post" class="d-inline">
-                  @csrf
-                  @method('delete')
-                  <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-outline-danger" disabled>Delete</button>
-                </form>
+                @if (App\Models\Job::where('education_id', $education->id)->get()->count() > 0)
+                  <button wire:click="destroy({{ $education->id }})" class="btn btn-outline-primary" disabled>Delete</button>
+                @else
+                  <button wire:click="destroy({{ $education->id }})" class="btn btn-outline-primary">Delete</button>
+                @endif
               </td>
             </tr>
           @endforeach
