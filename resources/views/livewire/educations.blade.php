@@ -47,5 +47,9 @@
         </ul>
       </tbody>
     </table>
+
+    <div class="d-flex justify-content-center">
+      {{ $educations->links() }}
+    </div>
   </div>
 </div>

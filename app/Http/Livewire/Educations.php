@@ -4,9 +4,13 @@ namespace App\Http\Livewire;
 
 use App\Models\Education;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Educations extends Component
 {
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+
     public $name;
     public $statusUpdate = false;
     
@@ -18,7 +22,7 @@ class Educations extends Component
     public function render()
     {
         return view('livewire.educations', [
-            'educations' => Education::orderBy('id', 'DESC')->get()
+            'educations' => Education::orderBy('id', 'DESC')->paginate(5)
         ]);
     }
 
