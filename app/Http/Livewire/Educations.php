@@ -13,6 +13,7 @@ class Educations extends Component
 
     public $name;
     public $statusUpdate = false;
+    public $paginate = 5;
     
     protected $listeners = [
         'educationStored' => 'handleStored',
@@ -22,7 +23,7 @@ class Educations extends Component
     public function render()
     {
         return view('livewire.educations', [
-            'educations' => Education::orderBy('id', 'DESC')->paginate(5)
+            'educations' => Education::orderBy('id', 'DESC')->paginate($this->paginate)
         ]);
     }
 
