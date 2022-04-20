@@ -17,10 +17,10 @@
   @endif
   
   <div class="row">
-    <div class="col">
+    <div class="col-8">
       <input wire:model="search" type="text" class="form-control form-control-sm" placeholder="Search">
     </div>
-    <div class="col">
+    <div class="col-4">
       <select wire:model="paginate" name="" id="" class="form-control form-control-sm w-auto">
         <option value="5">5</option>
         <option value="10">10</option>

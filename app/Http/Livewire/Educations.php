@@ -21,11 +21,11 @@ class Educations extends Component
         'educationUpdated' => 'handleUpdated'
     ];
     
-    // protected $updatesQueryString = ['search'];
+    protected $updatesQueryString = ['search'];
 
-    // public function mount(){
-    //     $this->search = request()->query('search', $this->search);
-    // }
+    public function mount(){
+        $this->search = request()->query('search', $this->search);
+    }
     
     public function render()
     {
