@@ -14,16 +14,25 @@ class Educations extends Component
     public $name;
     public $statusUpdate = false;
     public $paginate = 5;
+    public $search;
     
     protected $listeners = [
         'educationStored' => 'handleStored',
         'educationUpdated' => 'handleUpdated'
     ];
     
+    // protected $updatesQueryString = ['search'];
+
+    // public function mount(){
+    //     $this->search = request()->query('search', $this->search);
+    // }
+    
     public function render()
     {
         return view('livewire.educations', [
-            'educations' => Education::orderBy('id', 'DESC')->paginate($this->paginate)
+            'educations' => $this->search === null ?
+                Education::orderBy('id', 'DESC')->paginate($this->paginate) :
+                Education::where('name', 'like', '%' . $this->search . '%')->orderBy('id', 'DESC')->paginate($this->paginate)
         ]);
     }
 

@@ -18,7 +18,10 @@
   
   <div class="row">
     <div class="col">
-      <select wire:model="paginate" name="" id="" class="form-control sm w-auto">
+      <input wire:model="search" type="text" class="form-control form-control-sm" placeholder="Search">
+    </div>
+    <div class="col">
+      <select wire:model="paginate" name="" id="" class="form-control form-control-sm w-auto">
         <option value="5">5</option>
         <option value="10">10</option>
         <option value="15">15</option>
