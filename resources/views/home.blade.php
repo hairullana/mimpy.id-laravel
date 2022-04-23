@@ -16,7 +16,7 @@
     <!-- end heading -->
 
     <!-- search -->
-    <form action="/">
+    <form>
       <div class="row mx-5 mb-4">
         <div class="col">
           <input class="form-control" name="search" type="search" placeholder="Keyword" aria-label="Search"  value="{{ request('search') }}">
