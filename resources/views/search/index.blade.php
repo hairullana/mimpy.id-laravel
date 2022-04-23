@@ -65,7 +65,7 @@
       <div class="row mb-2">
         @foreach ($jobs as $job)
           <div class="col-md-6 mb-2">
-            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative" style="height:17rem">
               <div class="col-auto d-none d-lg-block">
                 <img src="/storage/@if(request('search')){{ $job->photo }}@else{{ $job->company->photo }}@endif" width="200" height="205" alt="">
               </div>
