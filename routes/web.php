@@ -18,6 +18,7 @@ use App\Http\Controllers\CompanyApplicationController;
 use App\Http\Controllers\EducationDashboardController;
 use App\Http\Controllers\ApplicantApplicationController;
 use App\Http\Controllers\ApplicationDashboardController;
+use App\Http\Controllers\EmailController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -115,4 +116,5 @@ Route::post('/cv', [CVController::class, 'update'])->middleware('auth:applicant'
 
 // search
 Route::get('/search', [SearchController::class, 'index'])->middleware('auth:applicant');
+
 
