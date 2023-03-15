@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ApplicantRequest;
+use App\Http\Requests\CompanyRequest;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Models\Applicant;
 use App\Models\Company;
+use Exception;
 
 class RegisterController extends Controller
 {
@@ -27,43 +30,37 @@ class RegisterController extends Controller
         ]);
     }
 
-    public function companyRegister(Request $request){
-        $validData = $request->validate([
-            'name' => ['required', 'min:5'],
-            'email' => ['required', 'email:dns', 'unique:companies', 'unique:applicants'],
-            'phone' => ['required', 'unique:companies', 'unique:applicants'],
-            'city' => ['required', 'min:4'],
-            'address' => ['required', 'min:5'],
-            'description' => ['required','min:10'],
-            'password' => ['required', 'confirmed', 'min:3']
-        ]);
+    public function companyRegister(CompanyRequest $request){
 
-        $validData['password'] = Hash::make($validData['password']);
-        $validData['photo'] = 'images/company/default.jpg';
-
-        Company::create($validData);
-
-        return redirect('/login')->with('success', 'Registration successfull! Please login.');
+        DB::beginTransaction();
+        try {
+            Applicant::factory()->create();
+            $validData = $request->validated();
+            $validData['password'] = Hash::make($validData['password']);
+            $validData['photo'] = 'images/company/default.jpg';
+            Company::create($validData);
+            DB::commit();
+            return redirect('/login')->with('success', 'Registration successfull! Please login.');
+        } catch (\Exception $e){
+            DB::rollBack();
+            throw $e;
+        }
     }
 
-    public function applicantRegister(Request $request){
-        // dd($request);
-        $validData = $request->validate([
-            'name' => ['required', 'min:3'],
-            'email' => ['required', 'email:dns', 'unique:companies', 'unique:applicants'],
-            'phone' => ['required', 'unique:companies', 'unique:applicants'],
-            'gender' => ['required'],
-            'address' => ['required', 'min:5'],
-            'password' => ['required', 'confirmed', 'min:3']
-        ]);
-
-        $validData['password'] = Hash::make($validData['password']);
-        $validData['photo'] = 'images/applicant/default.jpg';
-        $validData['cv'] = '';
-
-
-        Applicant::create($validData);
-
-        return redirect('/login')->with('success', 'Registration successfull! Please login.');
+    public function applicantRegister(ApplicantRequest $request){
+        
+        DB::beginTransaction();
+        try {
+            $validData = $request->validated();
+            $validData['password'] = Hash::make($validData['password']);
+            $validData['photo'] = 'images/applicant/default.jpg';
+            $validData['cv'] = '';
+            Applicant::create($validData);
+            DB::commit();
+            return redirect('/login')->with('success', 'Registration successfull! Please login.');
+        } catch (Exception $e) {
+            DB::rollBack();
+            throw $e;
+        }
     }
 }
