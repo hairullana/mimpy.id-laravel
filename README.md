@@ -19,22 +19,36 @@ git clone https://github.com/hairullana/mimpy.id-laravel
 cd gabut-chat
 ```
 
-### 3. Create and `Setup` .env file (DB)
+### 3. Create and `Setup` .env file (syntax in linux terminal)
 ```bash
 cp .env.example .env
 ```
 
-### 4. Generate key
+### 4. Install composer
+```bash
+composer install
+```
+if you get an error, use this command
+```bash
+composer update
+```
+
+### 5. Generate key
 ```bash
 php artisan key:generate
 ```
 
-### 5. Migrate database
+### 6. Migrate database dan seeding
 ```bash
 php artisan migrate:fresh --seed
 ```
 
-### 4. Run application
+### 7. Activate laravel storage
+```bash
+php artisan artisan storage:link
+```
+
+### 8. Run application
 ```bash
 php artisan serve
 ```
